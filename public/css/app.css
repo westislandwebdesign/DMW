@@ -1,0 +1,189 @@
+/* Styles that we put on top of Bootstrap */
+/* --------------------------------------------------
+   Table of Contents
+-----------------------------------------------------
+:: Shared Styles
+:: Page Name 1
+:: Page Name 2
+*/
+
+/* -----------------------------------------
+   Shared Styles
+----------------------------------------- */
+
+body {
+    overflow-y: scroll;
+}
+
+/* ---------------------------------------- */
+/* Sticky footer */
+html, body {
+    height: 100%;
+
+    /*The html and body elements cannot have any padding or margin.*/
+}
+
+ /*Wrapper for page content to push down footer*/
+#wrap {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+
+    /* Negative indent footer by it's height */
+    margin: 0 auto -80px;
+}
+
+ /*Set the fixed height of the footer here*/
+#push, #footer {
+    height: 80px;
+}
+
+ /*Lastly, apply responsive CSS fixes as necessary*/
+@media (max-width: 767px) {
+    #footer {
+        margin-left: -20px;
+        margin-right: -20px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+
+ /*Remove top padding when top navbar goes static in narrow viewports*/
+@media (max-width: 979px) {
+    body {
+        padding-top: 0;
+    }
+}
+
+/* ---------------------------------------- */
+/* general footer styling */
+#footer {
+    background-color: #e6e6e6;
+}
+#footer_row1 {
+    padding-top: 5px;
+}
+
+#footer_links {
+    padding-top: 15px;
+}
+
+
+/* ---------------------------------------- */
+/* general top navabr styling */
+#top_navbar {
+   margin-top: 10px;
+   font-size: 1.2em;
+}
+
+/* add background-color tracking for navbar items */
+.navbar .nav > li > a:focus, .navbar .nav > li > a:hover {
+    background-color: #dbdbdb;
+    color: #333333;
+    text-shadow: 1px 1px 0 #FFFFFF;
+}
+
+#navbar_logo {
+    margin-top: .5em;
+}
+
+.product-thumb {
+    height: 300px;
+}
+
+/* -----------------------------------------
+   index.php
+----------------------------------------- */
+/* add to Bootstrap's .carousel-caption style to support opacity in the slide caption in IE8 and under */
+.carousel-caption {
+    /* inherit the other properties */
+
+    /* IE fun */
+    background:none;
+    /* for IE8 */
+    -ms-filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#26333333,endColorstr=#26333333);
+    /* for IE7 and below */
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#BF000000,endColorstr=#BF000000);
+    zoom: 1;
+
+    /* IMPORTANT!!! */
+    /* Make sure we put back the original call to rgba() AFTER our IE fix above */
+    /* because part of the IE hack sets the background to none. */
+    background: rgba(0, 0, 0, 0.75);
+}
+
+
+/* -----------------------------------------
+   about.php
+----------------------------------------- */
+#ProfilePic {
+    float: left;
+    margin-right: 2em;
+    margin-bottom: 1.3em;
+}
+
+/* -----------------------------------------
+   guitars_details.php
+----------------------------------------- */
+.Product_Image_Container {
+    float: left; 
+}
+
+.Product_Info_Container {
+    float: left;
+}
+
+/* -----------------------------------------
+   videos.php
+----------------------------------------- */
+#VideosHeader {
+    text-align: center;
+    padding: 0.2em;
+    border-bottom: 1px solid #aaaaaa;
+}
+
+#video .modal-body {
+    max-height: 365px; /* set to height of video + 5 pixels so that vertical scrollbar does not appear in modal */
+}
+
+#video {
+    width: 670px; /* set to width of video + 30 pixels so that horizontal scrollbar does not appear in modal */
+    margin: -250px 0 0 -335px; /* center video in modal (original = margin: -250px 0 0 -280px;) -> set last number to width divided by 2 */
+}
+
+#video {
+    margin: -20px 0 0 -335px; /* center modal in browser (original = margin: -300px 0 0 -280 px;) -> just play with the values to get desired position */
+}
+
+
+/* center the play video button */
+.VideoContainer {
+    position: relative;
+}
+
+.VideoContainer > img {
+    display: block;
+    margin: auto;
+    z-index: 1;
+
+}
+
+.VideoContainer > .VideoPlayButton {
+    position: absolute;
+    top: 50%;
+    margin-top: -45px; /* half of the play image size (70px in our case) */
+    right: 50%;
+    margin-right: -45px;
+    z-index: 9;
+}
+
+.VideoContainer a {
+    /* remove any anchor outline on the play button image */
+    outline: none;
+ }
+/* ----------------------------- */
+
+/* -----------------------------------------
+   videos.test.php
+----------------------------------------- */
+.modal-backdrop {background-color: black;}
