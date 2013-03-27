@@ -12,29 +12,6 @@ class DMW_Controller extends Base_Controller {
             ->with('navbar_itemName', ''); // Home page does not have a navbar item
 	}
 
-    /* moved to guitars.php controller */
-//    public function get_guitars() {
-//        return View::make('dmw.guitars')
-//            ->with('title','Dalton Musicworks - Guitars')
-//            ->with('navbar_itemName', 'top_navbar_guitars');
-//    }
-
-//    moved to basses.php controller
-//    public function get_basses() {
-//
-//        return View::make('dmw.basses')
-//            ->with('title','Dalton Musicworks - Basses')
-//            ->with('navbar_itemName', 'top_navbar_basses');
-//    }
-
-//    moved to parts.php controller
-//    public function get_parts()
-//    {
-//        return View::make('dmw.parts')
-//            ->with('title','Dalton Musicworks - Parts')
-//            ->with('navbar_itemName', 'top_navbar_parts');
-//    }
-
     public function get_amps()
     {
         return View::make('dmw.amps')

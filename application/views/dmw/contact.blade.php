@@ -28,7 +28,9 @@
         <h3>Where We are:</h3>
         <!-- Clicking this placeholder fires the mapModal Reveal modal -->
         <p>
-            <a href="#myModal" role="button" class="btn" data-toggle="modal"><img src="img/Map.jpg" /></a>
+            <a href="#myModal" role="button" class="btn" data-toggle="modal">
+                {{ HTML::image('img/Map.jpg', 'Where we are on map') }}
+            </a>
         </p>
         <p><a href="#myModal" role="button" class="btn" data-toggle="modal">View Map</a></p>
         <p>
@@ -45,7 +47,7 @@
             </div>
 
             <div class="modal-body">
-                <p><img src="img/MapBig.jpg"></p>
+                <p>{{ HTML::image('img/MapBig.jpg', 'Where we are on map') }}</p>
             </div>
 
             <!--                    <div class="modal-footer">-->

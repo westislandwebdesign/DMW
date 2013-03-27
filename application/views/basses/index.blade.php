@@ -8,7 +8,7 @@
             <li class="span4">
                 <div class="thumbnail">
                     <p class="text-center"><a href="#">
-                            <img src="img/JazzBass.jpg" alt="Bass">
+                            {{ HTML::image('img/JazzBass.jpg', 'Bass') }}
                         </a>
                     </p>
                     <h3 class="text-center">Awesome Bass</h3>
@@ -22,7 +22,7 @@
             <li class="span4">
                 <div class="thumbnail">
                     <p class="text-center"><a href="#">
-                            <img src="img/JazzBass.jpg" alt="Bass">
+                            {{ HTML::image('img/JazzBass.jpg', 'Bass') }}
                         </a>
                     </p>
                     <h3 class="text-center">Awesome Bass</h3>
@@ -36,7 +36,7 @@
             <li class="span4">
                 <div class="thumbnail">
                     <p class="text-center"><a href="#">
-                            <img src="img/JazzBass.jpg" alt="Bass">
+                            {{ HTML::image('img/JazzBass.jpg', 'Bass') }}
                         </a>
                     </p>
                     <h3 class="text-center">Awesome Bass</h3>
@@ -56,7 +56,7 @@
             <li class="span4">
                 <div class="thumbnail">
                     <p class="text-center"><a href="#">
-                            <img src="img/JazzBass.jpg" alt="Bass">
+                            {{ HTML::image('img/JazzBass.jpg', 'Bass') }}
                         </a>
                     </p>
                     <h3 class="text-center">Awesome Bass</h3>
@@ -70,7 +70,7 @@
             <li class="span4">
                 <div class="thumbnail">
                     <p class="text-center"><a href="#">
-                            <img src="img/JazzBass.jpg" alt="Bass">
+                            {{ HTML::image('img/JazzBass.jpg', 'Bass') }}
                         </a>
                     </p>
                     <h3 class="text-center">Awesome Bass</h3>
@@ -84,7 +84,7 @@
             <li class="span4">
                 <div class="thumbnail">
                     <p class="text-center"><a href="#">
-                            <img src="img/JazzBass.jpg" alt="Bass">
+                            {{ HTML::image('img/JazzBass.jpg', 'Bass') }}
                         </a>
                     </p>
                     <h3 class="text-center">Awesome Bass</h3>

@@ -12,19 +12,18 @@
 
     <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
 
-    <base href="http://dmw.dev/"/>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Bootstrap -->
-    <link href="css/bootstrap/2.3.0/bootstrap.min.css" rel="stylesheet">
-    <link href="css/bootstrap/2.3.0/bootstrap-responsive.min.css" rel="stylesheet">
+    {{ HTML::style('css/bootstrap/2.3.0/bootstrap.min.css') }}
+    {{ HTML::style('css/bootstrap/2.3.0/bootstrap-responsive.min.css') }}
 
     @yield('pre-app-headerlinks')
 
     <!-- Project -->
-    <link href="css/app.css" rel="stylesheet">
+    {{ HTML::style('css/app.css') }}
 
     @yield('post-app-header-links')
 
@@ -48,15 +47,15 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a id="navbar_logo" class="pull-left" href="">
-                    <img src="img/DMWLogo40pxHigh.jpg" alt="Dalton Musicworks"/>
-                    <!--                Dalton Musicworks-->
+                <a id="navbar_logo" class="pull-left" href="{{ URL::base() }}">
+                    {{ HTML::image('img/DMWLogo40pxHigh.jpg', 'Dalton Musicworks logo') }}
+                    <!-- Dalton Musicworks -->
                 </a>
                 <div class="nav-collapse collapse">
                     <ul id="top_navbar" class="nav pull-right">
-                        <li id="top_navbar_guitars"><a href="guitars">Guitars</a></li>
-                        <li id="top_navbar_basses"><a href="basses">Basses</a></li>
-                        <li id="top_navbar_parts"><a href="parts">Parts</a></li>
+                        <li id="top_navbar_guitars">{{ HTML::link('guitars', 'Guitars', array('title' => 'Dalton Musicworks Guitars')) }}</li>
+                        <li id="top_navbar_basses">{{ HTML::link('basses', 'Basses', array('title' => 'Dalton Musicworks Basses')) }}</li>
+                        <li id="top_navbar_parts">{{ HTML::link('parts', 'Parts', array('title' => 'Dalton Musicworks Parts')) }}</li>
 <!--                        <li id="top_navbar_parts" class="dropdown">-->
 <!--                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Parts <b class="caret"></b></a>-->
 <!--                            <ul class="dropdown-menu">-->
@@ -68,23 +67,22 @@
 <!--                                <li><a href="#">Pickguards</a></li>-->
 <!--                                <li><a href="#">Pickups</a></li>-->
 <!--                            </ul>-->
-                        </li>
-                        <li id="top_navbar_amps"><a href="amps">Amps</a></li>
-                        <li id="top_navbar_effects"><a href="effects">Effects</a></li>
-                        <li id="top_navbar_videos"><a href="videos">Videos</a></li>
-
-                        <li id="top_navbar_faq"><a href="faq">FAQ</a></li>
-                        <li id="top_navbar_howtobuy"><a href="how-to-buy">How to Buy</a></li>
+<!--                        </li>-->
+                        <li id="top_navbar_amps">{{ HTML::link('amps', 'Amps', array('title' => 'Dalton Musicworks Amps')) }}</li>
+                        <li id="top_navbar_effects">{{ HTML::link('effects', 'Effects', array('title' => 'Dalton Musicworks Effects')) }}</li>
+                        <li id="top_navbar_videos">{{ HTML::link('videos', 'Videos', array('title' => 'Dalton Musicworks Videos')) }}</li>
+                        <li id="top_navbar_faq">{{ HTML::link('faq', 'FAQ', array('title' => 'Dalton Musicworks FAQ')) }}</li>
+                        <li id="top_navbar_howtobuy">{{ HTML::link('how-to-buy', 'How to Buy', array('title' => 'Dalton Musicworks How to Buy')) }}</li>
                         <li id="top_navbar_about" class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">About <b class="caret"></b></a>
                             <ul class="dropdown-menu">
-                                <li><a href="about-philosophy">Philosophy</a></li>
-                                <li><a href="about-people">People</a></li>
+                                <li>{{ HTML::link('about-philosophy', 'Philosophy', array('title' => 'Dalton Musicworks About Our Philosophy')) }}</li>
+                                <li>{{ HTML::link('about-people', 'People', array('title' => 'Dalton Musicworks ABout Our People')) }}</li>
                                 <!--                            <li><a href="#">FAQ</a></li>-->
                                 <!--                            <li><a href="#">How to Buy</a></li>-->
                             </ul>
                         </li>
-                        <li id="top_navbar_contact"><a href="contact">Contact Us</a></li>
+                        <li id="top_navbar_contact">{{ HTML::link('contact', 'Contact Us', array('title' => 'Dalton Musicworks Contact Us')) }}</li>
                     </ul>
                 </div>
             </div>
@@ -112,26 +110,27 @@
         <div class="row">
             <div class="span12">
                 <div id="footer_row1" class="row">
-                    <div class="span5">
-                        <a id="footer_logo" class="brand" href="home">
-                            <img src="img/DMWLogo40pxHigh.jpg" alt="Dalton Musicworks"/>
-<!--                                                        Dalton Musicworks-->
+                    <div class="span4">
+                        <a id="footer_logo" class="brand" href="{{ URL::base() }}">
+                            {{ HTML::image('img/DMWLogo40pxHigh.jpg', 'Dalton Musicworks logo') }}
+                            <!-- Dalton Musicworks -->
                         </a>
                     </div>
 
-                    <div class="span7">
+                    <div class="span8">
                         <ul id="footer_links" class="inline pull-right">
-                            <!--                            <li><a href="index.php">Home</a></li>-->
-                            <li><a href="guitars">Guitars</a></li>
-                            <li><a href="basses">Basses</a></li>
-                            <li><a href="parts">Parts</a></li>
-                            <li><a href="amps">Amps</a></li>
-                            <li><a href="effects">Effects</a></li>
-                            <li><a href="videos">Videos</a></li>
-                            <li><a href="#">FAQ</a></li>
-                            <li><a href="#">How to Buy</a></li>
-                            <li><a href="about-people">About</a></li>
-                            <li><a href="contact">Contact Us</a></li>
+                            <!--  <li><a href="index.php">Home</a></li> -->
+                            <li>{{ HTML::link('guitars', 'Guitars', array('title' => 'Dalton Musicworks Guitars')) }}</li>
+                            <li>{{ HTML::link('basses', 'Basses', array('title' => 'Dalton Musicworks Basses')) }}</li>
+                            <li>{{ HTML::link('parts', 'Parts', array('title' => 'Dalton Musicworks Parts')) }}</li>
+                            <li>{{ HTML::link('amps', 'Amps', array('title' => 'Dalton Musicworks Amps')) }}</li>
+                            <li>{{ HTML::link('effects', 'Effects', array('title' => 'Dalton Musicworks Effects')) }}</li>
+                            <li>{{ HTML::link('videos', 'Videos', array('title' => 'Dalton Musicworks Videos')) }}</li>
+                            <li>{{ HTML::link('faq', 'FAQ', array('title' => 'Dalton Musicworks FAQ')) }}</li>
+                            <li>{{ HTML::link('how-to-buy', 'How to Buy', array('title' => 'Dalton Musicworks How to Buy')) }}</li>
+<!--                            <li>{{ HTML::link('about-philosophy', 'Philosophy', array('title' => 'Dalton Musicworks About Our Philosophy')) }}</li>-->
+<!--                            <li>{{ HTML::link('about-people', 'People', array('title' => 'Dalton Musicworks ABout Our People')) }}</li>-->
+                            <li>{{ HTML::link('contact', 'Contact Us', array('title' => 'Dalton Musicworks Contact Us')) }}</li>
                         </ul>
                     </div>
                 </div>
@@ -149,18 +148,18 @@
 
 <!-- --------- Javascript ---------- -->
 <!-- jQuery (required for Bootstrap) -->
-<script src="js/jquery-1.9.1.min.js"></script>
+{{ HTML::script('js/jquery-1.9.1.min.js') }}
 
 <!-- Bootstrap -->
-<script src="js/bootstrap/2.3.0/bootstrap.min.js"></script>
+{{ HTML::script('js/bootstrap/2.3.0/bootstrap.min.js') }}
 
 <!-- enable basic responsiveness for <= IE8 -->
-<script src="js/respond.min.js"></script>
+{{ HTML::script('js/respond.min.js') }}
 
 @yield('pre-app-js')
 
 <!-- Project script (should load last) -->
-<script src="js/app.js"></script>
+{{ HTML::script('js/app.js') }}
 
 @yield('post-app-js')
 

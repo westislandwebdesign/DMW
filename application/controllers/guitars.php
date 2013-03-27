@@ -17,7 +17,7 @@ class Guitars_Controller extends Base_Controller {
         $guitars = Guitar::all();
 
         return View::make('guitars.index')
-            ->with('title','Dalton Musicworks - Guitars')
+            ->with('title','Guitars')
             ->with('navbar_itemName', 'top_navbar_guitars')
             ->with('guitars', $guitars);
     }
@@ -27,7 +27,7 @@ class Guitars_Controller extends Base_Controller {
 	public function get_new()
     {
         return View::make('guitars.new')
-            ->with('title', 'Dalton Musicworks - Guitars Add New Entry')
+            ->with('title', 'Guitars Add New Entry')
             ->with('navbar_itemName', 'top_navbar_guitars');
     }
 
@@ -61,10 +61,10 @@ class Guitars_Controller extends Base_Controller {
         $guitar = Guitar::where_model($model)->first();
 
         if ($guitar) {
-            return View::make('guitars.guitar_view')
-                ->with('title', 'Dalton Musicworks - Guitar ' . $model)
+            return View::make('guitars.guitar')
+                ->with('title', 'Guitar - ' . $guitar->model_friendly)
                 ->with('navbar_itemName', 'top_navbar_guitars')
-                ->with('prod_id', $guitar);
+                ->with('guitar', $guitar);
         }
         else {
             return $this->get_index();

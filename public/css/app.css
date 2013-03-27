@@ -66,6 +66,7 @@ html, body {
 
 #footer_links {
     padding-top: 15px;
+    font-size: 0.8em;
 }
 
 
@@ -73,7 +74,7 @@ html, body {
 /* general top navabr styling */
 #top_navbar {
    margin-top: 10px;
-   font-size: 1.2em;
+   font-size: 1em;
 }
 
 /* add background-color tracking for navbar items */
@@ -87,9 +88,9 @@ html, body {
     margin-top: .5em;
 }
 
-.product-thumb {
-    height: 300px;
-}
+/*.product-thumb {*/
+    /*height: 300px;*/
+/*}*/
 
 /* -----------------------------------------
    index.php

@@ -10,10 +10,9 @@
     <div class="row">
         <div class="span6 offset3">
             <div class="VideoContainer">
-                <img src="img/CJKC2011Preview.jpg" alt="Video background image">
-
+                {{ HTML::image('img/CJKC2011Preview.jpg', 'Video background image') }}
                 <a  class="VideoPlayButton" data-toggle="modal" href="#video">
-                    <img src="img/playbutton.png" alt="Video play button">
+                    {{ HTML::image('img/playbutton.png', 'Video play button') }}
                 </a>
             </div>
             <p class="text-center">We will be able to pop-up videos and see all the great gear in action.</p>
@@ -36,5 +35,5 @@
 
 @section('pre-app-js')
 <!-- instantiate video modal -->
-<script src="js/video-modal.js"></script>
+{{ HTML::script('js/video-modal.js') }}
 @endsection

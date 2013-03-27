@@ -14,19 +14,19 @@
 
         <div class="carousel-inner">
             <div class="item active"><!-- class of active since it's the first item -->
-                <img src="img/Strat.jpg" alt="" />
+                {{ HTML::image('img/Strat.jpg', 'Slide show Strat') }}
                 <div class="carousel-caption">
                     <p>Dalton Custom S</p>
                 </div>
             </div>
             <div class="item">
-                <img src="img/Godin.jpg" alt="" />
+                {{ HTML::image('img/Godin.jpg', 'Slide show Godin') }}
                 <div class="carousel-caption">
                     <p>Dalton Custom G</p>
                 </div>
             </div>
             <div class="item">
-                <img src="img/335.jpg" alt="" />
+                {{ HTML::image('img/335.jpg', 'Slide show 335') }}
                 <div class="carousel-caption">
                     <p>Dalton Custom 35</p>
                 </div>

@@ -46,7 +46,11 @@ Route::get('basses',  array('as'=>'basses', 'uses'=>'basses@index'));
 Route::get('basses/(:all)', array('as'=>'bass', 'uses'=>'basses@show'));
 
 /* ----------------  parts routes ------------- */
+// display all parts
 Route::get('parts', array('as'=>'parts', 'uses'=>'parts@index'));
+// view a specific part
+Route::get('parts/(:all)', array('as'=>'part', 'uses'=>'parts@show'));
+
 Route::get('bodies', array('as'=>'bodies', 'uses'=>'parts@bodies'));
 Route::get('fixed-bridges', array('as'=>'fixed-bridges', 'uses'=>'parts@fixed_bridges'));
 Route::get('tremolo-bridges', array('as'=>'trem-bridges', 'uses'=>'parts@trem_bridges'));
