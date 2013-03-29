@@ -151,7 +151,7 @@ class Cartify_Cart_Controller extends Controller
 		{
 			// Redirect back to the shopping cart page.
 			//
-			return Redirect::to('cartify/cart')->with('error', 'Invalid Item Row ID!');
+			return Redirect::to('error/' . htmlspecialchars('Invalid Item Row ID!'));
 		}
 
 		// Does this item exists on the shopping cart?
@@ -160,7 +160,7 @@ class Cartify_Cart_Controller extends Controller
 		{
 			// Redirect back to the shopping cart page.
 			//
-			return Redirect::to('cartify/cart')->with('error', 'Item was not found in your shopping cart!');
+			return Redirect::to('error/' . htmlspecialchars('Item was not found in your shopping cart!'));
 		}
 
 		// Other error.
@@ -169,11 +169,11 @@ class Cartify_Cart_Controller extends Controller
 		{
 			// Redirect back to the home page.
 			//
-			return Redirect::to('cartify/cart')->with('error', 'An unexpected error occurred!');
+			return Redirect::to('error/' . htmlspecialchars('An unexpected error occurred!'));
 		}
 
 		// Redirect back to the shopping cart page.
 		//
-		return Redirect::to('cartify/cart')->with('success', 'The item was removed from the shopping cart.');
+		return Redirect::to('cart')->with('success', 'The item was removed from the shopping cart.');
 	}
 }

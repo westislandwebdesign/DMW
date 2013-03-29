@@ -15,20 +15,41 @@
 
 <div class="row">
     <div class="span5">
-        {{ HTML::image("img/parts/$part->category/$part->prod_id" . "-big.jpg", $part->model_friendly) }}
+        <?php
+            $item_image = HTML::image("img/parts/$part->category/$part->prod_id" . "-big.jpg", $part->model_friendly);
+        ?>
+        {{ $item_image }}
     </div>
 
     <div class="span7">
         <div class="row">
             <div class="span7">
-                <h3> {{ $part->model_friendly }}  </h3>
+                <h2 class""> {{ $part->model_friendly }}  </h2>
             </div>
+        </div>
 
+        <div class="row">
             <div class="span7">
                 {{ $part->long_desc }}
             </div>
+        </div>
 
+        <div class="row">
+            <div class="span7">
+                <h3>Price: &#36;{{ $part->price }}</h3>
+            </div>
+        </div>
 
+        <div class="row">
+            <div class="span7">
+                {{ Form::open('add-to-cart', 'POST') }}
+                    {{ Form::hidden('prod_id', $part->prod_id, array('id' => 'prod_id' )) }}
+                    {{ Form::hidden('image', $item_image) }}
+                    {{ Form::hidden('part_page_link', HTML::link(URL::current(), $part->model_friendly)) }}
+
+                    {{ Form::button('Reserve', array('type' => 'submit', 'class' => 'btn btn-primary pull-left')) }}
+                 {{ Form::close() }}
+            </div>
         </div>
 
 

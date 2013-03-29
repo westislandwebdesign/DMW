@@ -89,6 +89,7 @@ class Redirect extends Response {
 	 */
 	public static function to_route($route, $parameters = array(), $status = 302)
 	{
+        $url = URL::to_route($route, $parameters);
 		return static::to(URL::to_route($route, $parameters), $status);
 	}
 

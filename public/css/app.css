@@ -88,9 +88,17 @@ html, body {
     margin-top: .5em;
 }
 
-/*.product-thumb {*/
-    /*height: 300px;*/
-/*}*/
+.socialbtns-cart {
+    margin: 5px 0;
+}
+
+.breadcrumb {
+    margin-bottom: 10px;
+}
+
+.pagination {
+    margin: 5px 0;
+}
 
 /* -----------------------------------------
    index.php

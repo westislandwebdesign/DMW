@@ -3,13 +3,16 @@
 @section('content')
 
 <div class="row">
-    <div class="span12">
+    <div class="span12 pull-left">
         <ul class="breadcrumb">
             <li>{{ HTML::link('', 'Home ') }}<span class="divider">/</span></li>
             <li>{{ HTML::link('parts', 'Parts ') }}<span class="divider">/</span></li>
             <li class="active">{{ $part_category }}</li>
         </ul>
     </div>
+        <!-- display pagination links -->
+        {{ $parts_paginator->links() }}
+
 </div>
 
 <div class="row">
@@ -38,12 +41,11 @@
                     @endforeach
                 </ul>
             @endif
-
-        <!-- display pagination links -->
-        {{ $parts_paginator->links() }}
-
     </div>
 </div>
+@endsection
 
-
+<!-- Rather than adding code to Laravel's Paginator links(), we'll add the Bootstrap styling class in JS -->
+@section('script')
+    $('.pagination').addClass('pagination-mini pagination-right');
 @endsection

@@ -48,7 +48,7 @@ class Parts_Controller extends Base_Controller
 
     public function get_bodies()
     {
-        $bodies_paginator = Part::parts(Part::CAT_NAME_BODY, 'ASC', 3);
+        $bodies_paginator = Part::parts(Part::CAT_NAME_BODY, 'ASC', 6);
 
         return $this->show_parts_group('Bodies', 'top_navbar_parts', 'Bodies', $bodies_paginator);
     }
@@ -135,5 +135,98 @@ class Parts_Controller extends Base_Controller
 //            ->with('title','Dalton Musicworks - Pickups')
 //            ->with('navbar_itemName', 'top_navbar_parts')
 //            ->with('pickups', $pickups);
+    }
+
+    public function post_add_to_cart() {
+
+        $prod_id = Input::get('prod_id', '');
+        $part_page_link = Input::get('part_page_link', '');
+
+        $qty = Input::get('quantity', 1);
+        $image = Input::get('image', '');
+
+        $part = Part::where_prod_id($prod_id)->first();
+
+        // Populate a proper item array.
+        $item = array(
+            'id'      => $part->prod_id,
+            'qty'     => $qty,
+            'price'   => $part->price,
+            'name'    => $part->model_friendly,
+            'options' => array(
+                'db_category'       => $part->category,
+                'image'             => $image,
+                'part_page_link'    => $part_page_link
+            )
+        );
+
+        try {
+            Cartify::cart()->insert($item);
+        }
+            // Check if we have invalid data passed.
+            //
+        catch (Cartify\CartInvalidDataException $e)
+        {
+            // Redirect back to the home page.
+            //
+            return Redirect::to('error/Invalid data passed.');
+        }
+
+            // Check if we a required index is missing.
+            //
+        catch (Cartify\CartRequiredIndexException $e)
+        {
+            // Redirect back to the home page.
+            //
+            return Redirect::to('error/' . htmlspecialchars( $e->getMessage()));
+        }
+
+            // Check if the quantity is invalid.
+            //
+        catch (Cartify\CartInvalidItemQuantityException $e)
+        {
+            // Redirect back to the home page.
+            //
+            return Redirect::to('error/' . htmlspecialchars('Invalid item quantity.'));
+        }
+
+            // Check if the item row id is invalid.
+            //
+        catch (Cartify\CartInvalidItemRowIdException $e)
+        {
+            // Redirect back to the home page.
+            //
+            return Redirect::to('error/' . htmlspecialchars('Invalid item row id.'));
+        }
+
+            // Check if the item name is invalid.
+            //
+        catch (Cartify\CartInvalidItemNameException $e)
+        {
+            // Redirect back to the home page.
+            //
+            return Redirect::to('error/' . htmlspecialchars('Invalid item name.'));
+        }
+
+            // Check if the item price is invalid.
+            //
+        catch (Cartify\CartInvalidItemPriceException $e)
+        {
+            // Redirect back to the home page.
+            //
+            return Redirect::to('error/' . htmlspecialchars('Invalid item price.'));
+        }
+
+            // Maybe we want to catch all the errors? Sure.
+            //
+        catch (Cartify\CartException $e)
+        {
+            // Redirect back to the home page.
+            //
+            return Redirect::to('error/' . htmlspecialchars('An unexpected error occurred!'));
+        }
+
+
+        return Redirect::to('cart');
     }
 }

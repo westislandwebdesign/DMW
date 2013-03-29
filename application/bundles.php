@@ -36,5 +36,9 @@
 return array(
 
 	'docs' => array('handles' => 'docs'),
+    'cartify' => array(
+        'handles' => 'cartify', // this is mainly for the examples
+        'auto'    => true
+    ),
 
 );

@@ -56,18 +56,6 @@
                         <li id="top_navbar_guitars">{{ HTML::link('guitars', 'Guitars', array('title' => 'Dalton Musicworks Guitars')) }}</li>
                         <li id="top_navbar_basses">{{ HTML::link('basses', 'Basses', array('title' => 'Dalton Musicworks Basses')) }}</li>
                         <li id="top_navbar_parts">{{ HTML::link('parts', 'Parts', array('title' => 'Dalton Musicworks Parts')) }}</li>
-<!--                        <li id="top_navbar_parts" class="dropdown">-->
-<!--                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Parts <b class="caret"></b></a>-->
-<!--                            <ul class="dropdown-menu">-->
-<!--                                <li><a href="#">Bridges</a></li>-->
-<!--                                <li><a href="#">Bodies</a></li>-->
-<!--                                <li><a href="#">Hardware</a></li>-->
-<!--                                <li><a href="#">Machine Heads</a></li>-->
-<!--                                <li><a href="#">Necks</a></li>-->
-<!--                                <li><a href="#">Pickguards</a></li>-->
-<!--                                <li><a href="#">Pickups</a></li>-->
-<!--                            </ul>-->
-<!--                        </li>-->
                         <li id="top_navbar_amps">{{ HTML::link('amps', 'Amps', array('title' => 'Dalton Musicworks Amps')) }}</li>
                         <li id="top_navbar_effects">{{ HTML::link('effects', 'Effects', array('title' => 'Dalton Musicworks Effects')) }}</li>
                         <li id="top_navbar_videos">{{ HTML::link('videos', 'Videos', array('title' => 'Dalton Musicworks Videos')) }}</li>
@@ -91,6 +79,17 @@
 
     <!-- Begin page content -->
     <div id="main">
+        <div class="socialbtns-cart container">
+            <div class="row">
+                <div class="span12">
+                    <div class="btn-group pull-right">
+                        <a class="btn btn-primary" href="{{ URL::to('cart') }}"><i class="icon-shopping-cart icon-white"></i> Cart</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
         <div class="container">
 
         @yield('content')
@@ -166,6 +165,15 @@
 <!-- set the active navbar item -->
 <script>
     $(document).ready(function() {
+        /* override Bootstrap's icon path using Laravel methods */
+        <?php
+            $icon_path = URL::to_asset('img/glyphicons-halflings.png');
+            echo '$(\'[class^="icon-"], [class*=" icon-"]\').css(\'background-image\',\'url("' .  $icon_path . '")\');';
+            echo "\r\n\t";
+            $icon_path = URL::to_asset('img/glyphicons-halflings-white.png');
+            echo '$(\'.icon-white\').css(\'background-image\',\'url("' .  $icon_path . '")\');';
+        ?>
+
         $('#top_navbar li').removeClass('active');
 
         <?php
@@ -174,6 +182,8 @@
             echo '$(\'#' . $navbar_itemName . '\').addClass(\'active\');' ;
         }
         ?>
+
+        @yield('script')
     });
 </script>
 <!-- --------------------------------- -->
