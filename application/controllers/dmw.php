@@ -4,7 +4,7 @@ class DMW_Controller extends Base_Controller {
 
     public $restful = true;
 
-	public function get_index()	{
+    public function get_index()	{
 
         return View::make('dmw.index')
             ->with('title','Dalton Musicworks - Home')
@@ -176,8 +176,106 @@ class DMW_Controller extends Base_Controller {
 
     public function get_checkout() {
 
+        $cart_contents = Cartify::cart()->contents();
+
         return View::make('dmw.checkout')
-            ->with('title','Dalton Musicworks - Checkout');
+            ->with('title','Dalton Musicworks - Checkout')
+            ->with('cart_contents', $cart_contents);
     }
 
+    public function post_checkout() {
+
+        // first check the hidden captcha
+        // If there IS a value, that means a robot found it and filled it in.
+        // A normal user would not be able to fill it in since it is hidden on
+        // the page.
+        $hidden_captcha = Input::get('hiddenCaptcha');
+        if ($hidden_captcha !== '') {
+            return Redirect::to('checkout')
+                ->with('error', 'Error sending message.')
+                ->with('title','Dalton Musicworks - Error: Message Not Sent');
+        }
+
+        try {
+
+            $name = e(Input::get('name'));
+            $email = e(Input::get('email'));
+            $phone = e(Input::get('phone'));
+            $message = e(Input::get('message'));
+
+            if ( (!is_null($name) && !empty($name)) &&
+                 (!is_null($email) && !empty($email)) &&
+                 (!is_null($message) && !empty($message))) {
+
+                    // validate the email address
+                    // regex to identify illegal characters in email address
+                    $checkEmail = '/^[^@]+@[^\s\r\n\'";,@%]+$/';
+
+                    // reject the email address if it deosn't match
+                    if (!preg_match($checkEmail, $email)) {
+                        return Redirect::to('checkout')
+                            ->with('error', 'Invalid email.')
+                            ->with('title','Dalton Musicworks - Checkout');
+                    }
+
+                    $order = "Order for:\r\n$name\r\n$email\r\n$phone\r\n\r\n";
+                    $order .= $this->format_cart_content_for_email();
+                    $order .= "\r\n" . $message;
+
+                    $email_to = Config::get('dmw.order_request_email');
+                    $email_name = Config::get('order_request_email_friendly');
+                    Message::to($email_to, $email_name)
+                        ->from($email)
+                        ->subject('DMW Order')
+                        ->body($order)
+                        ->send();
+
+//                return View::make('dmw.test-checkout')
+//                    ->with('title','Dalton Musicworks - Order Sent Test')
+//                    ->with('order', $order);
+            }
+            else {
+                return Redirect::to('checkout')
+                    ->with('error', 'Please fill in the required fields.')
+                    ->with('title','Dalton Musicworks - Checkout');
+            }
+
+        }
+        catch (Exception $e) {
+            return Redirect::to('error/' . htmlspecialchars( $e->getMessage()));
+        }
+
+        return Redirect::to('checkout')
+                ->with('success', 'Your message has been sent.')
+                ->with('title','Dalton Musicworks - Message Sent');
+    }
+
+    private function format_cart_content_for_email() {
+
+        $order = "--------------------------------------------\r\n" . "Requested products:\r\n";
+
+        $cart_contents = Cartify::cart()->contents();
+
+        foreach ($cart_contents as $item) {
+            $order .= "*********\r\n" .
+                "Product ID: " . $item['id'] . "\r\n" .
+                "Product Name: " . $item['name'] . "\r\n" .
+                "Product Quantity: " . $item['qty'] . "\r\n" .
+                "Product Price: $" . $item['price'] . "\r\n";
+        }
+
+        $order .= "-------------------------\r\n" .
+                  "-------------------------\r\n" .
+                  "Number of items: " . Cartify::cart()->total_items() . "\r\n" .
+                  "Total: " . Cartify::cart()->total() . "\r\n";
+
+        $order .= "--------------------------------------------\r\n";
+
+        // limit line length to 70 characters
+        $order = wordwrap($order, 70);
+
+        return $order;
+    }
 }
+
+

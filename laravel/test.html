@@ -1,0 +1,179 @@
+<!-- Rather than adding code to Laravel's Paginator links(), we'll add the Bootstrap styling class in JS -->
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+
+    <!--    The following needs to be passed in:
+                $title - Page Title
+                $navbar_itemName - page's navbar item to be selected in top navbar.
+                                   This is one of the li #id targets in the navbar below.
+    -->
+
+    <title>Dalton Musicworks - Bodies </title>
+
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap -->
+    <link href="http://www.westislandwebdesign.com/dmw-lar/public/css/bootstrap/2.3.0/bootstrap.min.css" media="all" type="text/css" rel="stylesheet">
+    <link href="http://www.westislandwebdesign.com/dmw-lar/public/css/bootstrap/2.3.0/bootstrap-responsive.min.css" media="all" type="text/css" rel="stylesheet">
+
+
+    <!-- Project -->
+    <link href="http://www.westislandwebdesign.com/dmw-lar/public/css/app.css" media="all" type="text/css" rel="stylesheet">
+
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+
+</head>
+<body>
+<!-- ----------- Wrap all page content ------------- -->
+<div id="wrap">
+    <!-- navbar -->
+    <div class="navbar">
+        <div class="navbar-inner">
+            <div class="container">
+                <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a id="navbar_logo" class="pull-left" href="http://www.westislandwebdesign.com/dmw-lar/public">
+                    <img src="http://www.westislandwebdesign.com/dmw-lar/public/img/DMWLogo40pxHigh.jpg" alt="Dalton Musicworks logo">                    <!-- Dalton Musicworks -->
+                </a>
+                <div class="nav-collapse collapse">
+                    <ul id="top_navbar" class="nav pull-right">
+                        <li id="top_navbar_guitars"><a href="http://www.westislandwebdesign.com/dmw-lar/public/guitars" title="Dalton Musicworks Guitars">Guitars</a></li>
+                        <li id="top_navbar_basses"><a href="http://www.westislandwebdesign.com/dmw-lar/public/basses" title="Dalton Musicworks Basses">Basses</a></li>
+                        <li id="top_navbar_parts"><a href="http://www.westislandwebdesign.com/dmw-lar/public/parts" title="Dalton Musicworks Parts">Parts</a></li>
+                        <li id="top_navbar_amps"><a href="http://www.westislandwebdesign.com/dmw-lar/public/amps" title="Dalton Musicworks Amps">Amps</a></li>
+                        <li id="top_navbar_effects"><a href="http://www.westislandwebdesign.com/dmw-lar/public/effects" title="Dalton Musicworks Effects">Effects</a></li>
+                        <li id="top_navbar_videos"><a href="http://www.westislandwebdesign.com/dmw-lar/public/videos" title="Dalton Musicworks Videos">Videos</a></li>
+                        <li id="top_navbar_faq"><a href="http://www.westislandwebdesign.com/dmw-lar/public/faq" title="Dalton Musicworks FAQ">FAQ</a></li>
+                        <li id="top_navbar_howtobuy"><a href="http://www.westislandwebdesign.com/dmw-lar/public/how-to-buy" title="Dalton Musicworks How to Buy">How to Buy</a></li>
+                        <li id="top_navbar_about" class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">About <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="http://www.westislandwebdesign.com/dmw-lar/public/about-philosophy" title="Dalton Musicworks About Our Philosophy">Philosophy</a></li>
+                                <li><a href="http://www.westislandwebdesign.com/dmw-lar/public/about-people" title="Dalton Musicworks ABout Our People">People</a></li>
+                                <!--                            <li><a href="#">FAQ</a></li>-->
+                                <!--                            <li><a href="#">How to Buy</a></li>-->
+                            </ul>
+                        </li>
+                        <li id="top_navbar_contact"><a href="http://www.westislandwebdesign.com/dmw-lar/public/contact" title="Dalton Musicworks Contact Us">Contact Us</a></li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Begin page content -->
+    <div id="main">
+        <a class="btn btn-mini pull-right" href="http://www.westislandwebdesign.com/dmw-lar/public/cart"><i class="icon-shopping-cart"></i></a>
+        <div class="container">
+
+            <div class="row">
+                <div class="span12">
+                    <!-- display pagination links -->
+                    <div class="pagination">
+                        <ul>
+                            <li class="previous_page disabled"><a href="#">&laquo; Previous</a></li>
+                            <li class="active"><a href="#">1</a></li>
+                            <li><a href="http://www.westislandwebdesign.com/dmw-lar/public/bodies?page=2">2</a></li>
+                            <li class="next_page"><a href="http://www.westislandwebdesign.com/dmw-lar/public/bodies?page=2">Next &raquo;</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+    <!-- End page content -->
+    <!-- need this for sticky footer solution -->
+    <div id="push"></div>
+</div>
+<!-- ------------------ /. wrap --------------------- -->
+
+<!-- Footer -->
+<div id="footer">
+    <div class="container">
+        <div class="row">
+            <div class="span12">
+                <div id="footer_row1" class="row">
+                    <div class="span4">
+                        <a id="footer_logo" class="brand" href="http://www.westislandwebdesign.com/dmw-lar/public">
+                            <img src="http://www.westislandwebdesign.com/dmw-lar/public/img/DMWLogo40pxHigh.jpg" alt="Dalton Musicworks logo">                            <!-- Dalton Musicworks -->
+                        </a>
+                    </div>
+
+                    <div class="span8">
+                        <ul id="footer_links" class="inline pull-right">
+                            <!--  <li><a href="index.php">Home</a></li> -->
+                            <li><a href="http://www.westislandwebdesign.com/dmw-lar/public/guitars" title="Dalton Musicworks Guitars">Guitars</a></li>
+                            <li><a href="http://www.westislandwebdesign.com/dmw-lar/public/basses" title="Dalton Musicworks Basses">Basses</a></li>
+                            <li><a href="http://www.westislandwebdesign.com/dmw-lar/public/parts" title="Dalton Musicworks Parts">Parts</a></li>
+                            <li><a href="http://www.westislandwebdesign.com/dmw-lar/public/amps" title="Dalton Musicworks Amps">Amps</a></li>
+                            <li><a href="http://www.westislandwebdesign.com/dmw-lar/public/effects" title="Dalton Musicworks Effects">Effects</a></li>
+                            <li><a href="http://www.westislandwebdesign.com/dmw-lar/public/videos" title="Dalton Musicworks Videos">Videos</a></li>
+                            <li><a href="http://www.westislandwebdesign.com/dmw-lar/public/faq" title="Dalton Musicworks FAQ">FAQ</a></li>
+                            <li><a href="http://www.westislandwebdesign.com/dmw-lar/public/how-to-buy" title="Dalton Musicworks How to Buy">How to Buy</a></li>
+                            <!--                            <li><a href="http://www.westislandwebdesign.com/dmw-lar/public/about-philosophy" title="Dalton Musicworks About Our Philosophy">Philosophy</a></li>-->
+                            <!--                            <li><a href="http://www.westislandwebdesign.com/dmw-lar/public/about-people" title="Dalton Musicworks ABout Our People">People</a></li>-->
+                            <li><a href="http://www.westislandwebdesign.com/dmw-lar/public/contact" title="Dalton Musicworks Contact Us">Contact Us</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="span5 offset5">
+                        <p class="muted">&copy; 2013 West Island Web Design</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- --------- Javascript ---------- -->
+<!-- jQuery (required for Bootstrap) -->
+<script src="http://www.westislandwebdesign.com/dmw-lar/public/js/jquery-1.9.1.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="http://www.westislandwebdesign.com/dmw-lar/public/js/bootstrap/2.3.0/bootstrap.min.js"></script>
+
+<!-- enable basic responsiveness for <= IE8 -->
+<script src="http://www.westislandwebdesign.com/dmw-lar/public/js/respond.min.js"></script>
+
+
+<!-- Project script (should load last) -->
+<script src="http://www.westislandwebdesign.com/dmw-lar/public/js/app.js"></script>
+
+
+<!-- set the active navbar item -->
+<script>
+    $(document).ready(function() {
+        /* override Bootstrap's icon path using Laravel methods */
+        $('[class^="icon-"], [class*=" icon-"]').css('background-image','url("http://www.westislandwebdesign.com/dmw-lar/public/img/glyphicons-halflings.png")');
+        $('.icon-white').css('background-image','url("http://www.westislandwebdesign.com/dmw-lar/public/img/glyphicons-halflings-white.png")');
+        $('#top_navbar li').removeClass('active');
+
+        $('#top_navbar_parts').addClass('active');
+        $('.pagination').addClass('hi');
+    });
+</script>
+<!-- --------------------------------- -->
+
+</body>
+</html>
+

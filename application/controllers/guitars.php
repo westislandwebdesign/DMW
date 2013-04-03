@@ -14,12 +14,19 @@ class Guitars_Controller extends Base_Controller {
     // display a list of items
 	public function get_index()
     {
-        $guitars = Guitar::all();
+        try {
 
-        return View::make('guitars.index')
-            ->with('title','Guitars')
-            ->with('navbar_itemName', 'top_navbar_guitars')
-            ->with('guitars', $guitars);
+            $guitars = Guitar::all();
+
+            return View::make('guitars.index')
+                ->with('title','Guitars')
+                ->with('navbar_itemName', 'top_navbar_guitars')
+                ->with('guitars', $guitars);
+        }
+        catch (\Laravel\Database\Exception $e) {
+
+            return Redirect::to('error/' . htmlspecialchars( $e->getMessage()));
+        }
     }
 
     // "/guitars/new"

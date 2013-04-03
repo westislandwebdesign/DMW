@@ -25,6 +25,8 @@
     <!-- Project -->
     {{ HTML::style('css/app.css') }}
 
+    @yield('page-styles')
+
     @yield('post-app-header-links')
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -59,18 +61,21 @@
                         <li id="top_navbar_amps">{{ HTML::link('amps', 'Amps', array('title' => 'Dalton Musicworks Amps')) }}</li>
                         <li id="top_navbar_effects">{{ HTML::link('effects', 'Effects', array('title' => 'Dalton Musicworks Effects')) }}</li>
                         <li id="top_navbar_videos">{{ HTML::link('videos', 'Videos', array('title' => 'Dalton Musicworks Videos')) }}</li>
-                        <li id="top_navbar_faq">{{ HTML::link('faq', 'FAQ', array('title' => 'Dalton Musicworks FAQ')) }}</li>
-                        <li id="top_navbar_howtobuy">{{ HTML::link('how-to-buy', 'How to Buy', array('title' => 'Dalton Musicworks How to Buy')) }}</li>
+<!--                        <li id="top_navbar_faq">{{ HTML::link('faq', 'FAQ', array('title' => 'Dalton Musicworks FAQ')) }}</li>-->
+<!--                        <li id="top_navbar_howtobuy">{{ HTML::link('how-to-buy', 'How to Buy', array('title' => 'Dalton Musicworks How to Buy')) }}</li>-->
                         <li id="top_navbar_about" class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">About <b class="caret"></b></a>
                             <ul class="dropdown-menu">
                                 <li>{{ HTML::link('about-philosophy', 'Philosophy', array('title' => 'Dalton Musicworks About Our Philosophy')) }}</li>
-                                <li>{{ HTML::link('about-people', 'People', array('title' => 'Dalton Musicworks ABout Our People')) }}</li>
-                                <!--                            <li><a href="#">FAQ</a></li>-->
-                                <!--                            <li><a href="#">How to Buy</a></li>-->
+                                <li>{{ HTML::link('about-people', 'People', array('title' => 'Dalton Musicworks About Our People')) }}</li>
+                                <li>{{ HTML::link('how-to-buy', 'How to Buy', array('title' => 'Dalton Musicworks How to Buy')) }}</li>
+                                <li>{{ HTML::link('faq', 'FAQ', array('title' => 'Dalton Musicworks FAQ')) }}</li>
                             </ul>
                         </li>
                         <li id="top_navbar_contact">{{ HTML::link('contact', 'Contact Us', array('title' => 'Dalton Musicworks Contact Us')) }}</li>
+                        <li>
+                            <a href="{{ URL::to('cart') }}"><i class="icon-shopping-cart"></i></a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -79,20 +84,9 @@
 
     <!-- Begin page content -->
     <div id="main">
-        <div class="socialbtns-cart container">
-            <div class="row">
-                <div class="span12">
-                    <div class="btn-group pull-right">
-                        <a class="btn btn-primary" href="{{ URL::to('cart') }}"><i class="icon-shopping-cart icon-white"></i> Cart</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
         <div class="container">
 
-        @yield('content')
+            @yield('content')
 
         </div>
     </div>
@@ -109,10 +103,10 @@
         <div class="row">
             <div class="span12">
                 <div id="footer_row1" class="row">
-                    <div class="span4">
-                        <a id="footer_logo" class="brand" href="{{ URL::base() }}">
-                            {{ HTML::image('img/DMWLogo40pxHigh.jpg', 'Dalton Musicworks logo') }}
-                            <!-- Dalton Musicworks -->
+                    <div id="footer_logo" class="span4">
+                        <a class="brand" href="{{ URL::base() }}">
+<!--                            {{ HTML::image('img/DMWLogo40pxHigh.jpg', 'Dalton Musicworks logo') }}-->
+                             Dalton Musicworks
                         </a>
                     </div>
 
@@ -175,7 +169,6 @@
         ?>
 
         $('#top_navbar li').removeClass('active');
-
         <?php
         if (!empty($navbar_itemName)) {
             // target the correct navbar item to display this page as selected
@@ -183,7 +176,9 @@
         }
         ?>
 
-        @yield('script')
+        /* Rather than adding code to Laravel's Paginator links(),
+            we'll add the Bootstrap styling class dynamically with JS */
+        $('.pagination').addClass('pagination-mini pagination-right');
     });
 </script>
 <!-- --------------------------------- -->

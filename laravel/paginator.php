@@ -185,7 +185,10 @@ class Paginator {
 
 		$content = '<ul>' . $this->previous() . $links . $this->next() . '</ul>';
 
-		return '<div class="pagination">'.$content.'</div>';
+        // TODO: DMW added Bootstrap class for pagination
+        // tried to do it with js, but IE 8 did not like it
+//		return '<div class="pagination pagination-mini pagination-right">'.$content.'</div>';
+        return '<div class="pagination">'.$content.'</div>';
 	}
 
 	/**

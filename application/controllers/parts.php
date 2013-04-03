@@ -48,9 +48,15 @@ class Parts_Controller extends Base_Controller
 
     public function get_bodies()
     {
-        $bodies_paginator = Part::parts(Part::CAT_NAME_BODY, 'ASC', 6);
+        try {
+            $bodies_paginator = Part::parts(Part::CAT_NAME_BODY, 'ASC', 6);
+            return $this->show_parts_group('Bodies', 'top_navbar_parts', 'Bodies', $bodies_paginator);
+        }
+        catch (Exception $e) {
+            return Redirect::to('error/' . htmlspecialchars( $e->getMessage()));
+        }
 
-        return $this->show_parts_group('Bodies', 'top_navbar_parts', 'Bodies', $bodies_paginator);
+
     }
 
     public function get_fixed_bridges()

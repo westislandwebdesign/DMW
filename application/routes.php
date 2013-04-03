@@ -4,6 +4,7 @@ Route::get('cart', 'dmw@cart');
 Route::post('cart', 'dmw@cart');
 Route::get('cart/remove/(:all)', 'dmw@cart_remove');
 Route::get('checkout', 'dmw@checkout');
+Route::post('checkout', 'dmw@checkout');
 
 /* ----------------  general DMW routes ------------- */
 Route::get('/', 'dmw@index');
@@ -68,7 +69,7 @@ Route::get('pickups', array('as'=>'pickups', 'uses'=>'parts@pickups'));
 Route::post('add-to-cart', 'parts@add_to_cart');
 
 /* --------------- errors -------------- */
-Route::get('error/(:any)', array('as'=>'error', 'uses' => 'errors@error'));
+Route::get('error/(:all)', array('as'=>'error', 'uses' => 'errors@error'));
 
 /*
 |--------------------------------------------------------------------------

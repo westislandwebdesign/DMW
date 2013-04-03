@@ -64,8 +64,11 @@ html, body {
     padding-top: 5px;
 }
 
-#footer_links {
+#footer_links, #footer_logo {
     padding-top: 15px;
+}
+
+#footer_links {
     font-size: 0.8em;
 }
 
@@ -190,9 +193,52 @@ html, body {
     /* remove any anchor outline on the play button image */
     outline: none;
  }
-/* ----------------------------- */
+
 
 /* -----------------------------------------
    videos.test.php
 ----------------------------------------- */
 .modal-backdrop {background-color: black;}
+
+
+/* -----------------------------------------
+   checkout.php
+----------------------------------------- */
+form p.help {
+    font-style: italic;
+    padding: 0 1em 1em 1em;
+}
+
+form p.help em {
+    color: red;
+}
+
+form label em {
+    color: red;
+}
+
+.hiddenCaptcha {
+    width: 1px;
+    height: 1px;
+    font-size: 1px;
+    visibility: hidden;
+}
+
+/* The following styles are declared in the checkout.php file
+    so that we can harness Laravel's URL builder class via php
+    to build the path to the images */
+/*input:focus:required:invalid {*/
+    /*background-image: url(images/error.png);*/
+    /*background-position: 98% center;*/
+    /*background-repeat: no-repeat;*/
+/*}*/
+
+/*input:required:valid {*/
+    /*background-image: url(images/accept.png);*/
+    /*background-position: 98% center;*/
+    /*background-repeat: no-repeat;*/
+/*}*/
+
+/*input[type="email"]:focus:required:invalid {*/
+    /*background-image: url(images/email_error.png);*/
+/*}*/

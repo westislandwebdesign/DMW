@@ -40,5 +40,8 @@ return array(
         'handles' => 'cartify', // this is mainly for the examples
         'auto'    => true
     ),
+    'messages' => array(
+        'auto' => true)
+
 
 );
