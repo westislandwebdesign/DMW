@@ -69,7 +69,7 @@ Route::get('pickups', array('as'=>'pickups', 'uses'=>'parts@pickups'));
 Route::post('add-to-cart', 'parts@add_to_cart');
 
 /* --------------- errors -------------- */
-Route::get('error/(:all)', array('as'=>'error', 'uses' => 'errors@error'));
+Route::get('error', array('as'=>'error', 'uses' => 'errors@error'));
 
 /*
 |--------------------------------------------------------------------------

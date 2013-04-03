@@ -53,10 +53,8 @@ class Parts_Controller extends Base_Controller
             return $this->show_parts_group('Bodies', 'top_navbar_parts', 'Bodies', $bodies_paginator);
         }
         catch (Exception $e) {
-            return Redirect::to('error/' . htmlspecialchars( $e->getMessage()));
+            return Redirect::to_route('error')->with('error', $e->getMessage());
         }
-
-
     }
 
     public function get_fixed_bridges()
@@ -166,72 +164,43 @@ class Parts_Controller extends Base_Controller
             )
         );
 
+        $error_message = '';
         try {
             Cartify::cart()->insert($item);
         }
-            // Check if we have invalid data passed.
-            //
         catch (Cartify\CartInvalidDataException $e)
         {
-            // Redirect back to the home page.
-            //
-            return Redirect::to('error/Invalid data passed.');
+            $error_message = 'Invalid data passed.';
         }
-
-            // Check if we a required index is missing.
-            //
         catch (Cartify\CartRequiredIndexException $e)
         {
-            // Redirect back to the home page.
-            //
-            return Redirect::to('error/' . htmlspecialchars( $e->getMessage()));
+            $error_message = $e->getMessage();
         }
-
-            // Check if the quantity is invalid.
-            //
         catch (Cartify\CartInvalidItemQuantityException $e)
         {
-            // Redirect back to the home page.
-            //
-            return Redirect::to('error/' . htmlspecialchars('Invalid item quantity.'));
+            $error_message = 'Invalid item quantity.';
         }
-
-            // Check if the item row id is invalid.
-            //
         catch (Cartify\CartInvalidItemRowIdException $e)
         {
             // Redirect back to the home page.
-            //
-            return Redirect::to('error/' . htmlspecialchars('Invalid item row id.'));
+            $error_message = 'Invalid item row id.';
         }
-
-            // Check if the item name is invalid.
-            //
         catch (Cartify\CartInvalidItemNameException $e)
         {
-            // Redirect back to the home page.
-            //
-            return Redirect::to('error/' . htmlspecialchars('Invalid item name.'));
+            $error_message = 'Invalid item name.';
         }
-
-            // Check if the item price is invalid.
-            //
         catch (Cartify\CartInvalidItemPriceException $e)
         {
-            // Redirect back to the home page.
-            //
-            return Redirect::to('error/' . htmlspecialchars('Invalid item price.'));
+            $error_message = 'Invalid item price.';
         }
-
-            // Maybe we want to catch all the errors? Sure.
-            //
         catch (Cartify\CartException $e)
         {
-            // Redirect back to the home page.
-            //
-            return Redirect::to('error/' . htmlspecialchars('An unexpected error occurred!'));
+            $error_message = 'An unexpected error occurred!';
         }
 
+        if (!is_null($error_message) && !empty($error_message)) {
+            return Redirect::to_route('error')->with('error', $error_message);
+        }
 
         return Redirect::to('cart');
     }

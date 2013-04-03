@@ -229,10 +229,6 @@ class DMW_Controller extends Base_Controller {
                         ->subject('DMW Order')
                         ->body($order)
                         ->send();
-
-//                return View::make('dmw.test-checkout')
-//                    ->with('title','Dalton Musicworks - Order Sent Test')
-//                    ->with('order', $order);
             }
             else {
                 return Redirect::to('checkout')
@@ -242,12 +238,15 @@ class DMW_Controller extends Base_Controller {
 
         }
         catch (Exception $e) {
-            return Redirect::to('error/' . htmlspecialchars( $e->getMessage()));
+            return Redirect::to_route('error')->with('error', $e->getMessage());
         }
 
+        // clear the cart
+        Cartify::cart()->destroy();
+
         return Redirect::to('checkout')
-                ->with('success', 'Your message has been sent.')
-                ->with('title','Dalton Musicworks - Message Sent');
+                ->with('success', 'Your order has been sent.')
+                ->with('title','Dalton Musicworks - Order Sent');
     }
 
     private function format_cart_content_for_email() {
