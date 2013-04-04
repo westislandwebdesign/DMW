@@ -23,9 +23,8 @@ class Guitars_Controller extends Base_Controller {
                 ->with('navbar_itemName', 'top_navbar_guitars')
                 ->with('guitars', $guitars);
         }
-        catch (\Laravel\Database\Exception $e) {
-
-            return Redirect::to('error/' . htmlspecialchars( $e->getMessage()));
+        catch (Exception $e) {
+            return Redirect::to_route('error')->with('error', $e->getMessage());
         }
     }
 
