@@ -20,18 +20,25 @@ class Parts_Controller extends Base_Controller
             ->with('navbar_itemName', 'top_navbar_parts');
     }
 
-    private function show_parts_group($title, $navbar_item_name, $part_cat, $parts_paginator) {
-        return View::make('parts.parts')
-            ->with('title', $title)
-            ->with('navbar_itemName', $navbar_item_name)
-            ->with('part_category', $part_cat)
-            ->with('parts_paginator', $parts_paginator);
+    private function show_parts_group($title, $navbar_item_name, $part_cat, $db_cat_name) {
+
+        try {
+            $parts_paginator = Part::parts($db_cat_name, 'ASC', 6);
+            return View::make('parts.parts')
+                ->with('title', $title)
+                ->with('navbar_itemName', $navbar_item_name)
+                ->with('part_category', $part_cat)
+                ->with('parts_paginator', $parts_paginator);
+        }
+        catch (Exception $e) {
+            return Redirect::to_route('error')->with('error', $e->getMessage());
+        }
+
     }
 
     // "/parts/:prod_id"
     // display a specific item
-    public function get_show($model)
-    {
+    public function get_show($model) {
         $model = strtolower($model);
         $part = Part::where_model($model)->first();
 
@@ -46,99 +53,36 @@ class Parts_Controller extends Base_Controller
         }
     }
 
-    public function get_bodies()
-    {
-        try {
-            $bodies_paginator = Part::parts(Part::CAT_NAME_BODY, 'ASC', 6);
-            return $this->show_parts_group('Bodies', 'top_navbar_parts', 'Bodies', $bodies_paginator);
-        }
-        catch (Exception $e) {
-            return Redirect::to_route('error')->with('error', $e->getMessage());
-        }
+    public function get_bodies() {
+        return $this->show_parts_group('Bodies', 'top_navbar_parts', 'Bodies', Part::CAT_NAME_BODY);
     }
 
-    public function get_fixed_bridges()
-    {
-        return "show fixed bridges";
-
-//        $fixed_bridges = Part::where_category(Part::CAT_NAME_FIXED_BRIDGE);
-//
-//        return View::make('parts.fixed_bridges')
-//            ->with('title','Dalton Musicworks - Fixed Bridges')
-//            ->with('navbar_itemName', 'top_navbar_parts')
-//            ->with('fixed_bridges', $fixed_bridges);
+    public function get_fixed_bridges() {
+        return $this->show_parts_group('Fixed Bridges', 'top_navbar_parts', 'Fixed Bridges', Part::CAT_NAME_FIXED_BRIDGE);
     }
 
     public function get_trem_bridges() {
-
-        return "show trem bridges";
-
-//        $trem_bridges = Part::where_category(Part::CAT_NAME_TREM_BRIDGE);
-//
-//        return View::make('parts.trem_bridges')
-//            ->with('title','Dalton Musicworks - Tremolo Bridges')
-//            ->with('navbar_itemName', 'top_navbar_parts')
-//            ->with('trem_bridges', $trem_bridges);
+        return $this->show_parts_group('Tremolo Bridges', 'top_navbar_parts', 'Tremolo Bridges', Part::CAT_NAME_TREM_BRIDGE);
     }
 
     public function get_hardware() {
-
-        return "show hardware";
-
-//        $hardware = Part::where_category(Part::CAT_NAME_HARDWARE);
-//
-//        return View::make('parts.hardware')
-//            ->with('title','Dalton Musicworks - Hardware')
-//            ->with('navbar_itemName', 'top_navbar_parts')
-//            ->with('hardware', $hardware);
+        return $this->show_parts_group('Hardware', 'top_navbar_parts', 'Hardware', Part::CAT_NAME_HARDWARE);
     }
 
     public function get_machine_heads() {
-
-        return "show machine heads";
-
-//        $machine_heads = Part::where_category(Part::CAT_NAME_MACHINE_HEAD);
-//
-//        return View::make('parts.machine_heads')
-//            ->with('title','Dalton Musicworks - Machine Heads')
-//            ->with('navbar_itemName', 'top_navbar_parts')
-//            ->with('machine_heads', $machine_heads);
+        return $this->show_parts_group('Machine Heads', 'top_navbar_parts', 'Machine Heads', Part::CAT_NAME_MACHINE_HEAD);
     }
 
     public function get_necks() {
-
-        return "show necks";
-
-//        $necks = Part::where_category(Part::CAT_NAME_NECK);
-//
-//        return View::make('parts.necks')
-//            ->with('title','Dalton Musicworks - Necks')
-//            ->with('navbar_itemName', 'top_navbar_parts')
-//            ->with('necks', $necks);
+        return $this->show_parts_group('Necks', 'top_navbar_parts', 'Necks', Part::CAT_NAME_NECK);
     }
 
     public function get_pickguards() {
-
-        return "show pickguards";
-
-//        $pickguards = Part::where_category(Part::CAT_NAME_PICKGUARD);
-//
-//        return View::make('parts.pickguards')
-//            ->with('title','Dalton Musicworks - Pickguards')
-//            ->with('navbar_itemName', 'top_navbar_parts')
-//            ->with('pickguards', $pickguards);
+        return $this->show_parts_group('Pickguards', 'top_navbar_parts', 'Pickguards', Part::CAT_NAME_PICKGUARD);
     }
 
     public function get_pickups() {
-
-        return "show pickups";
-
-//        $pickups = Part::where_category(Part::CAT_NAME_PICKUP);
-//
-//        return View::make('parts.pickups')
-//            ->with('title','Dalton Musicworks - Pickups')
-//            ->with('navbar_itemName', 'top_navbar_parts')
-//            ->with('pickups', $pickups);
+        return $this->show_parts_group('Pickups', 'top_navbar_parts', 'Pickups', Part::CAT_NAME_PICKUP);
     }
 
     public function post_add_to_cart() {
