@@ -21,7 +21,11 @@ $web = true;
 // --------------------------------------------------------------
 // Set the core Laravel path constants.
 // --------------------------------------------------------------
+// development
 require '../paths.php';
+// production
+//require '../../larapps/dmw/paths.php';
+
 
 // --------------------------------------------------------------
 // Unset the temporary web variable.
