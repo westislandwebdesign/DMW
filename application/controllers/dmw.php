@@ -224,16 +224,46 @@ class DMW_Controller extends Base_Controller {
 
                     $email_to = Config::get('dmw.order_request_email');
                     $email_name = Config::get('order_request_email_friendly');
+
                     Message::to($email_to, $email_name)
+                        ->cc('tester@westislandwebdesign.com')
+                        //>bcc(array('evenmore@address.com' => 'Another name', 'onelast@address.com'))
                         ->from($email)
                         ->subject('DMW Order')
                         ->body($order)
                         ->send();
+
+//                    Message::send(function($message) use ($order, $email_to, $email_name, $email)
+//                    {
+//                        Log::write('$email_to: ', $email_to);
+//                        $message->to(array($email_to, $email_name));
+//                        //$message->cc('tester@westislandwebdesign.com');
+//                        //$messages->bcc(array('evenmore@address.com' => 'Another name', 'onelast@address.com'));
+//
+//                        $message->from($email);
+//                        $message->subject('DMW Order');
+//                        $message->body($order);
+//                    });
+//                    if(Message::was_sent())
+//                    {
+//                        // clear the cart
+//                        Cartify::cart()->destroy();
+//
+//                        return Redirect::to('checkout')
+//                            ->with('success', 'Your order has been sent.')
+//                            ->with('title','Dalton Musicworks - Order Sent');
+//                    }
+//                    // You can even check if a specific email address received the message.
+//                    if(Message::was_sent('tester@westislandwebdesign.com'))
+//                    {
+//                        echo 'tester@westislandwebdesign.com';
+//                    }
             }
             else {
                 return Redirect::to('checkout')
                     ->with('error', 'Please fill in the required fields.')
-                    ->with('title','Dalton Musicworks - Checkout');
+                    ->with('title','Dalton Musicworks - Checkout')
+                    ->with_input();
             }
 
         }

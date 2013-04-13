@@ -17,8 +17,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Bootstrap -->
-    {{ HTML::style('css/bootstrap/2.3.0/bootstrap.css') }}
-    {{ HTML::style('css/bootstrap/2.3.0/bootstrap-responsive.css') }}
+    {{ HTML::style('css/bootstrap/2.3.0/bootstrap.min.css') }}
+    {{ HTML::style('css/bootstrap/2.3.0/bootstrap-responsive.min.css') }}
 
     @yield('pre-app-headerlinks')
 

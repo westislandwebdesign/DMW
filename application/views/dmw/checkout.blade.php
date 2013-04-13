@@ -105,7 +105,7 @@
                                 <td>{{ $item['price'] }}</td>
                             </tr>
                         @empty
-                            <tr><td>colspan="6">Your shopping cart is empty.</td></tr>
+                            <tr><td colspan="6">Your shopping cart is empty.</td></tr>
                         @endforelse
                     </table>
 

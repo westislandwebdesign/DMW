@@ -67,15 +67,28 @@ return array(
 			'prefix'   => '',
 		),
 
+        /* local development */
 		'mysql' => array(
 			'driver'   => 'mysql',
 			'host'     => 'localhost',
-			'database' => 'dmw_db',    //'westis5_dmw_db',
-            'username' => 'dmw_admin', //westis5_dmwadmin',
-            'password' => 'WIWD*2013', // gu1tarGOD1
+			'database' => 'dmw_db',
+            'username' => 'dmw_admin',
+            'password' => 'WIWD*2013',
 			'charset'  => 'utf8',
 			'prefix'   => '',
 		),
+
+        /* production connection
+        'mysql' => array(
+            'driver'   => 'mysql',
+            'host'     => 'localhost',
+            'database' => 'westis5_dmw_db',
+            'username' => 'westis5_dmwadmin',
+            'password' => 'gu1tarGOD1',
+            'charset'  => 'utf8',
+            'prefix'   => '',
+        ),
+        */
 
 		'pgsql' => array(
 			'driver'   => 'pgsql',
