@@ -54,16 +54,26 @@
                         i.e. if 'success' is not found which will be the first time the the page is hit or
                                 there was an error -->
         @if (!($success = Session::get('success')))
+
         <div class="row">
-            <div class="span6">
+            <div class="span10">
+                <p>
+                    Dear customer:  Please note that we don’t do anonymous “click and buy” transactions.  We want to connect with you about your order.
+                    Please fill in the form below to send us an email which will automatically include the list of items from your shopping cart.  We will confirm your order details, as well as any additional shipping fees and send you a PayPal invoice.  Your order will be processed upon confirmation of payment of the PayPal invoice.
+                    We realize this process may take a little longer, but it ensures that we maintain the level of personal service that we strive to offer our clients.
+                </p>
+            </div>
+        </div>
+
+
+
+        <div class="row">
+            <div class="span7">
                 <div class="form-container">
 
                     {{ Form::open( URL::to('checkout'), 'POST') }}
                         <fieldset>
-                        <legend>Reserve Your Items</legend>
-                        <p class="help">Fill in the form below and email will be sent to us, along with the list of items you wish to purchase.
-                                        Required fields are indicated by a <em>*</em>.
-                        </p>
+                        <legend>Reserve Your Items <small class="help">Required fields are indicated by a <em>*</em>.</small></legend>
 
                         <label for="name">Name: <em>*</em></label>
                         {{ Form::text('name', Input::old('name'), array('class' => 'formField input-block-level', 'placeholder' => 'Your Name', 'required' => 'required')) }}
@@ -87,7 +97,9 @@
                 </div>
             </div>
 
-            <div class="span5 offset1">
+            <div class="span5">
+                <br>
+                <br>
                 <div class="well">
                     <p>Your order:</p>
                     <table class="table table-hover table-striped table-bordered">
@@ -99,13 +111,13 @@
                         </tr>
                         </thead>
                         @forelse ($cart_contents as $item)
-                            <tr>
-                                <td>{{ $item['name'] }}</td>
-                                <td>{{ $item['qty'] }}</td>
-                                <td>{{ $item['price'] }}</td>
-                            </tr>
+                        <tr>
+                            <td>{{ $item['name'] }}</td>
+                            <td>{{ $item['qty'] }}</td>
+                            <td>{{ $item['price'] }}</td>
+                        </tr>
                         @empty
-                            <tr><td colspan="6">Your shopping cart is empty.</td></tr>
+                        <tr><td colspan="6">Your shopping cart is empty.</td></tr>
                         @endforelse
                     </table>
 
@@ -125,6 +137,8 @@
                     </table>
                 </div>
             </div>
+
+
         </div>
         @endif
 

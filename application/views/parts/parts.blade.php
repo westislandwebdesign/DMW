@@ -22,7 +22,9 @@
     <div class="span12">
 
         @if (!$parts_paginator->results)
-            <h3>Sorry, no {{ strtolower($part_category) }} available at this time.</h3>
+            <div class="alert alert-error">
+                <h3>Sorry, no {{ strtolower($part_category) }} available at this time.</h3>
+            </div>
         @else
             <ul class="thumbnails">
                 @foreach($parts_paginator->results as $part)

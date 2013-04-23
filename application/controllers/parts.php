@@ -61,8 +61,8 @@ class Parts_Controller extends Base_Controller
         return $this->show_parts_group('Fixed Bridges', 'top_navbar_parts', 'Fixed Bridges', Part::CAT_NAME_FIXED_BRIDGE);
     }
 
-    public function get_trem_bridges() {
-        return $this->show_parts_group('Tremolo Bridges', 'top_navbar_parts', 'Tremolo Bridges', Part::CAT_NAME_TREM_BRIDGE);
+    public function get_vib_bridges() {
+        return $this->show_parts_group('Vibrato Bridges', 'top_navbar_parts', 'Vibrato Bridges', Part::CAT_NAME_VIB_BRIDGE);
     }
 
     public function get_hardware() {
@@ -83,6 +83,14 @@ class Parts_Controller extends Base_Controller
 
     public function get_pickups() {
         return $this->show_parts_group('Pickups', 'top_navbar_parts', 'Pickups', Part::CAT_NAME_PICKUP);
+    }
+
+    public function get_electronics() {
+        return $this->show_parts_group('Electronics', 'top_navbar_parts', 'Electronics', Part::CAT_NAME_ELECTRONICS);
+    }
+
+    public function get_accessories() {
+        return $this->show_parts_group('Accessories', 'top_navbar_parts', 'Accessories', Part::CAT_NAME_ACCESSORIES);
     }
 
     public function post_add_to_cart() {

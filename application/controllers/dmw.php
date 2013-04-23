@@ -49,14 +49,21 @@ class DMW_Controller extends Base_Controller {
     public function get_about_philosophy()
     {
         return View::make('dmw.about_philosophy')
-            ->with('title','Dalton Musicworks - About our Philosophy')
+            ->with('title','Dalton Musicworks - About Our Philosophy')
             ->with('navbar_itemName', 'top_navbar_about');
     }
 
     public function get_about_people()
     {
         return View::make('dmw.about_people')
-            ->with('title','Dalton Musicworks - About our People')
+            ->with('title','Dalton Musicworks - About Our People')
+            ->with('navbar_itemName', 'top_navbar_about');
+    }
+
+    public function get_our_brands()
+    {
+        return View::make('dmw.our_brands')
+            ->with('title','Dalton Musicworks - About Our Brands')
             ->with('navbar_itemName', 'top_navbar_about');
     }
 

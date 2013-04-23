@@ -13,44 +13,47 @@ class Part extends Basemodel
     // these need to be the same as the category string in the dmw_db parts table
     const CAT_NAME_BODY         = 'BODY';
     const CAT_NAME_FIXED_BRIDGE = 'FIXED_BRIDGE';
-    const CAT_NAME_TREM_BRIDGE  = 'TREM_BRIDGE';
+    const CAT_NAME_VIB_BRIDGE   = 'VIB_BRIDGE';
     const CAT_NAME_HARDWARE     = 'HARDWARE';
     const CAT_NAME_MACHINE_HEAD = 'MACHINE_HEAD';
     const CAT_NAME_NECK         = 'NECK';
     const CAT_NAME_PICKGUARD    = 'PICKGUARD';
     const CAT_NAME_PICKUP       = 'PICKUP';
+    const CAT_NAME_ELECTRONICS  = 'ELECTRONICS';
+    const CAT_NAME_ACCESSORIES  = 'ACCESSORY';
 
     // these need to be the same as the routes declared in routes.php
     const ROUTE_BODIES          = 'bodies';
     const ROUTE_FIXED_BRIDGES   = 'fixed-bridges';
-    const ROUTE_TREM_BRIDGES    = 'trem-bridges';
+    const ROUTE_VIB_BRIDGES     = 'vibrato-bridges';
     const ROUTE_HARDWARE        = 'hardware';
     const ROUTE_MACHINE_HEADS   = 'machine-heads';
     const ROUTE_NECKS           = 'necks';
     const ROUTE_PICKGUARDS      = 'pickguards';
     const ROUTE_PICKUPS         = 'pickups';
+    const ROUTE_ACCESSORIES     = 'accessories';
 
     // returns a Paginator object
     public static function parts($cat_name, $order_by, $results_per_page) {
         return static::where('category', '=', $cat_name)->order_by('id', $order_by)->paginate($results_per_page);
     }
 
-    public function friendly_category($db_category, $plural=1) {
+    public function category_name_for_breadcrumbs($db_category) {
 
         $friendly_cat = '';
 
         switch($db_category) {
 
             case Part::CAT_NAME_BODY:
-                $friendly_cat = $plural  ? 'Bodies' : 'Body';
+                $friendly_cat = 'Bodies';
                 break;
 
             case Part::CAT_NAME_FIXED_BRIDGE:
-                $friendly_cat = $plural  ? 'Fixed Bridges' : 'Fixed Bridge';
+                $friendly_cat = 'Fixed Bridges';
                 break;
 
-            case Part::CAT_NAME_TREM_BRIDGE:
-                $friendly_cat = $plural  ? 'Tremolo Bridges' : 'Tremolo Bridge';
+            case Part::CAT_NAME_VIB_BRIDGE:
+                $friendly_cat = 'Vibrato Bridges';
                 break;
 
             case Part::CAT_NAME_HARDWARE:
@@ -62,15 +65,23 @@ class Part extends Basemodel
                 break;
 
             case Part::CAT_NAME_NECK:
-                $friendly_cat = $plural  ? 'Necks' : 'Neck';
+                $friendly_cat = 'Necks';
                 break;
 
             case Part::CAT_NAME_PICKGUARD:
-                $friendly_cat = $plural  ? 'Pickguards' : 'Pickguard';
+                $friendly_cat = 'Pickguards';
                 break;
 
             case Part::CAT_NAME_PICKUP:
-                $friendly_cat = $plural  ? 'Neck' : 'Neck';
+                $friendly_cat = 'Pickups';
+                break;
+
+            case Part::CAT_NAME_ELECTRONICS:
+                $friendly_cat = 'Electronics';
+                break;
+
+            case Part::CAT_NAME_ACCESSORIES:
+                $friendly_cat = 'Accessories';
                 break;
 
             default:
@@ -115,6 +126,10 @@ class Part extends Basemodel
 
             case Part::CAT_NAME_PICKUP:
                 $route = Part::ROUTE_PICKUPS;
+                break;
+
+            case Part::CAT_NAME_ELECTRONICS:
+                $route = Part::ROUTE_ELECTRONICS;
                 break;
 
             default:

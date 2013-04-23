@@ -88,7 +88,7 @@ html, body {
 }
 
 #navbar_logo {
-    margin-top: .5em;
+    margin-top: .7em;
 }
 
 .socialbtns-cart {
@@ -211,12 +211,16 @@ html, body {
 /* -----------------------------------------
    checkout.php
 ----------------------------------------- */
-form p.help {
+form .help {
     font-style: italic;
     padding: 0 1em 1em 1em;
 }
 
-form p.help em {
+form legend .help {
+    margin-left: 2em;
+}
+
+form legend .help em {
     color: red;
 }
 

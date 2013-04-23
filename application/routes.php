@@ -13,6 +13,7 @@ Route::get('faq', 'dmw@faq');
 Route::get('how-to-buy', 'dmw@how_to_buy');
 Route::get('about-philosophy', 'dmw@about_philosophy');
 Route::get('about-people', 'dmw@about_people');
+Route::get('about-brands', 'dmw@our_brands');
 Route::get('contact', 'dmw@contact');
 Route::post('contact', array(/*'before'=>'csrf',*/ 'dmw@contact'));
 
@@ -59,12 +60,14 @@ Route::get('parts/(:all)', array('as'=>'part', 'uses'=>'parts@show'));
 
 Route::get('bodies', array('as'=>'bodies', 'uses'=>'parts@bodies'));
 Route::get('fixed-bridges', array('as'=>'fixed-bridges', 'uses'=>'parts@fixed_bridges'));
-Route::get('tremolo-bridges', array('as'=>'trem-bridges', 'uses'=>'parts@trem_bridges'));
+Route::get('vibrato-bridges', array('as'=>'vib-bridges', 'uses'=>'parts@vib_bridges'));
 Route::get('hardware', array('as'=>'hardware', 'uses'=>'parts@hardware'));
 Route::get('machine-heads', array('as'=>'machine-heads', 'uses'=>'parts@machine_heads'));
 Route::get('necks', array('as'=>'necks', 'uses'=>'parts@necks'));
 Route::get('pickguards', array('as'=>'pickguards', 'uses'=>'parts@pickguards'));
 Route::get('pickups', array('as'=>'pickups', 'uses'=>'parts@pickups'));
+Route::get('electronics', array('as'=>'electronics', 'uses'=>'parts@electronics'));
+Route::get('accessories', array('as'=>'accessories', 'uses'=>'parts@accessories'));
 
 Route::post('add-to-cart', 'parts@add_to_cart');
 

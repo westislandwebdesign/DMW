@@ -7,7 +7,7 @@
         <ul class="breadcrumb">
             <li>{{ HTML::link('', 'Home ') }}<span class="divider">/</span></li>
             <li>{{ HTML::link('parts', 'Parts ') }}<span class="divider">/</span></li>
-            <li>{{ HTML::link($part->part_route($part->category), $part->friendly_category($part->category) . ' ') }}<span class="divider">/</span></li>
+            <li>{{ HTML::link($part->part_route($part->category), $part->category_name_for_breadcrumbs($part->category) . ' ') }}<span class="divider">/</span></li>
             <li class="active">{{ $part->model_friendly }}</li>
         </ul>
     </div>
@@ -47,7 +47,7 @@
                     {{ Form::hidden('image', $item_image) }}
                     {{ Form::hidden('part_page_link', HTML::link(URL::current(), $part->model_friendly)) }}
 
-                    {{ Form::button('Reserve', array('type' => 'submit', 'class' => 'btn btn-primary pull-left')) }}
+                    {{ Form::button('Add to Cart', array('type' => 'submit', 'class' => 'btn btn-primary pull-left')) }}
                  {{ Form::close() }}
             </div>
         </div>

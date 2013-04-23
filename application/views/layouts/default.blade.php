@@ -20,22 +20,16 @@
     {{ HTML::style('css/bootstrap/2.3.0/bootstrap.min.css') }}
     {{ HTML::style('css/bootstrap/2.3.0/bootstrap-responsive.min.css') }}
 
-    @yield('pre-app-headerlinks')
-
     <!-- Project -->
     {{ HTML::style('css/app.css') }}
 
+    <!--  used by pviews which need to define in-page styles-->
     @yield('page-styles')
-
-    @yield('post-app-header-links')
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-
-    @yield('header-js')
-
 </head>
 <body>
 <!-- ----------- Wrap all page content ------------- -->
@@ -50,7 +44,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a id="navbar_logo" class="pull-left" href="{{ URL::base() }}">
-                    {{ HTML::image('img/DMWLogo40pxHigh.jpg', 'Dalton Musicworks logo') }}
+                    {{ HTML::image('img/DMWLogo35pxHigh.jpg', 'Dalton Musicworks logo') }}
                     <!-- Dalton Musicworks -->
                 </a>
                 <div class="nav-collapse collapse">
@@ -68,6 +62,7 @@
                             <ul class="dropdown-menu">
                                 <li>{{ HTML::link('about-philosophy', 'Philosophy', array('title' => 'Dalton Musicworks About Our Philosophy')) }}</li>
                                 <li>{{ HTML::link('about-people', 'People', array('title' => 'Dalton Musicworks About Our People')) }}</li>
+                                <li>{{ HTML::link('about-brands', 'Brands', array('title' => 'Dalton Musicworks About Our Brands')) }}</li>
 <!--                                <li>{{ HTML::link('how-to-buy', 'How to Buy', array('title' => 'Dalton Musicworks How to Buy')) }}</li>-->
 <!--                                <li>{{ HTML::link('faq', 'FAQ', array('title' => 'Dalton Musicworks FAQ')) }}</li>-->
                             </ul>
@@ -84,6 +79,7 @@
 
     <!-- Begin page content -->
     <div id="main">
+
         <div class="container">
 
             @yield('content')
@@ -105,7 +101,7 @@
                 <div id="footer_row1" class="row">
                     <div id="footer_logo" class="span4">
                         <a class="brand" href="{{ URL::base() }}">
-<!--                            {{ HTML::image('img/DMWLogo40pxHigh.jpg', 'Dalton Musicworks logo') }}-->
+<!--                            {{ HTML::image('img/DMWLogo30pxHigh.jpg', 'Dalton Musicworks logo') }}-->
                              Dalton Musicworks
                         </a>
                     </div>
