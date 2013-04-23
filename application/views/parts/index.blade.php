@@ -102,14 +102,14 @@
                 </div>
             </li>
 
-            <li class="span3">
-                <div class="thumbnail">
-                    <a href="{{ URL::to('accessories') }}">
-                        {{ HTML::image('img/parts/accessories.jpg', 'Accessories') }}
-                        <h4>Accessories</h4>
-                    </a>
-                </div>
-            </li>
+<!--            <li class="span3">-->
+<!--                <div class="thumbnail">-->
+<!--                    <a href="{{ URL::to('accessories') }}">-->
+<!--                        {{ HTML::image('img/parts/accessories.jpg', 'Accessories') }}-->
+<!--                        <h4>Accessories</h4>-->
+<!--                    </a>-->
+<!--                </div>-->
+<!--            </li>-->
 
         </ul>
     </div>

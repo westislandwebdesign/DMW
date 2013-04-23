@@ -25,6 +25,13 @@ class DMW_Controller extends Base_Controller {
             ->with('navbar_itemName', 'top_navbar_effects');
     }
 
+    public function get_accessories()
+    {
+        return View::make('dmw.accessories')
+            ->with('title','Dalton Musicworks - Accessories')
+            ->with('navbar_itemName', 'top_navbar_accessories');
+    }
+
     public function get_videos() {
 
         return View::make('dmw.videos')
