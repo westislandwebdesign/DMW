@@ -326,6 +326,27 @@ class DMW_Controller extends Base_Controller {
 
         return $order;
     }
+
+    public function get_switch_language($lang_code, $current_page) {
+
+        $lang_code = strtolower($lang_code);
+        switch($lang_code) {
+
+            case 'en':
+            case 'fr':
+                Session::put('language_code', $lang_code);
+                break;
+
+           // unsupported language, default to english
+           default:
+               Session::put('language_code', $lang_code);
+               break;
+        }
+
+
+        return Redirect::to($current_page);
+    }
+
 }
 
 

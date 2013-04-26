@@ -1,5 +1,8 @@
 <!DOCTYPE HTML>
-<html lang="en">
+<?php
+$language_code = Session::get('language_code', 'en');
+?>
+<html lang={{"\"" . $language_code . "\"" }}>
 <head>
 
 <!--    The following needs to be passed in:
@@ -58,37 +61,46 @@
                 <!-- everything within this div will be hidden at 940px or less -->
                 <div class="nav-collapse collapse">
                     <ul id="top_navbar" class="nav pull-right">
-                        <li id="top_navbar_guitars">{{ HTML::link('guitars', 'Guitars', array('title' => 'Dalton Musicworks Guitars')) }}</li>
-                        <li id="top_navbar_basses">{{ HTML::link('basses', 'Basses', array('title' => 'Dalton Musicworks Basses')) }}</li>
-                        <li id="top_navbar_parts">{{ HTML::link('parts', 'Parts', array('title' => 'Dalton Musicworks Parts')) }}</li>
-                        <li id="top_navbar_amps">{{ HTML::link('amps', 'Amps', array('title' => 'Dalton Musicworks Amps')) }}</li>
-                        <li id="top_navbar_effects">{{ HTML::link('effects', 'Effects', array('title' => 'Dalton Musicworks Effects')) }}</li>
-
-<!--                        <li id="top_navbar_accessories">{{ HTML::link('accessories', 'Accessories', array('title' => 'Dalton Musicworks Accessories')) }}</li>-->
+                        <li id="top_navbar_guitars">{{ HTML::link('guitars', Lang::line('navigation.guitars')->get($language_code), array('title' => 'Dalton Musicworks Guitars')) }}</li>
+                        <li id="top_navbar_basses">{{ HTML::link('basses', Lang::line('navigation.basses')->get($language_code), array('title' => 'Dalton Musicworks Basses')) }}</li>
+                        <li id="top_navbar_parts">{{ HTML::link('parts', Lang::line('navigation.parts')->get($language_code), array('title' => 'Dalton Musicworks Parts')) }}</li>
+                        <li id="top_navbar_amps">{{ HTML::link('amps', Lang::line('navigation.amps')->get($language_code), array('title' => 'Dalton Musicworks Amps')) }}</li>
+                        <li id="top_navbar_effects">{{ HTML::link('effects', Lang::line('navigation.effects')->get($language_code), array('title' => 'Dalton Musicworks Effects')) }}</li>
                         <li id="top_navbar_accessories" class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Accessories <b class="caret"></b></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ Lang::line('navigation.accessories')->get($language_code) }}<b class="caret"></b></a>
                             <ul class="dropdown-menu">
-                                <li>{{ HTML::link('cases', 'Cases', array('title' => 'Dalton Musicworks Accessories - Cases')) }}</li>
-                                <li>{{ HTML::link('straps', 'Straps', array('title' => 'Dalton Musicworks Accessories - Straps')) }}</li>
+                                <li>{{ HTML::link('cases', Lang::line('navigation.cases')->get($language_code), array('title' => 'Dalton Musicworks Accessories - Cases')) }}</li>
+                                <li>{{ HTML::link('straps', Lang::line('navigation.straps')->get($language_code), array('title' => 'Dalton Musicworks Accessories - Straps')) }}</li>
                             </ul>
                         </li>
 
-                        <li id="top_navbar_videos">{{ HTML::link('videos', 'Videos', array('title' => 'Dalton Musicworks Videos')) }}</li>
-                        <li id="top_navbar_faq">{{ HTML::link('faq', 'FAQ', array('title' => 'Dalton Musicworks FAQ')) }}</li>
-                        <li id="top_navbar_howtobuy">{{ HTML::link('how-to-buy', 'How to Buy', array('title' => 'Dalton Musicworks How to Buy')) }}</li>
+                        <li id="top_navbar_videos">{{ HTML::link('videos', Lang::line('navigation.videos')->get($language_code), array('title' => 'Dalton Musicworks Videos')) }}</li>
+                        <li id="top_navbar_faq">{{ HTML::link('faq', Lang::line('navigation.faq')->get($language_code), array('title' => 'Dalton Musicworks FAQ')) }}</li>
+                        <li id="top_navbar_howtobuy">{{ HTML::link('how-to-buy', Lang::line('navigation.howtobuy')->get($language_code), array('title' => 'Dalton Musicworks How to Buy')) }}</li>
                         <li id="top_navbar_about" class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">About <b class="caret"></b></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ Lang::line('navigation.about')->get($language_code) }}<b class="caret"></b></a>
                             <ul class="dropdown-menu">
-                                <li>{{ HTML::link('about-philosophy', 'Philosophy', array('title' => 'Dalton Musicworks About Our Philosophy')) }}</li>
-                                <li>{{ HTML::link('about-people', 'People', array('title' => 'Dalton Musicworks About Our People')) }}</li>
-                                <li>{{ HTML::link('about-brands', 'Brands', array('title' => 'Dalton Musicworks About Our Brands')) }}</li>
-<!--                                <li>{{ HTML::link('how-to-buy', 'How to Buy', array('title' => 'Dalton Musicworks How to Buy')) }}</li>-->
-<!--                                <li>{{ HTML::link('faq', 'FAQ', array('title' => 'Dalton Musicworks FAQ')) }}</li>-->
+                                <li>{{ HTML::link('about-philosophy', Lang::line('navigation.philosophy')->get($language_code), array('title' => 'Dalton Musicworks About Our Philosophy')) }}</li>
+                                <li>{{ HTML::link('about-people', Lang::line('navigation.people')->get($language_code), array('title' => 'Dalton Musicworks About Our People')) }}</li>
+                                <li>{{ HTML::link('about-brands', Lang::line('navigation.brands')->get($language_code), array('title' => 'Dalton Musicworks About Our Brands')) }}</li>
                             </ul>
                         </li>
-                        <li id="top_navbar_contact">{{ HTML::link('contact', 'Contact Us', array('title' => 'Dalton Musicworks Contact Us')) }}</li>
+                        <li id="top_navbar_contact">{{ HTML::link('contact', Lang::line('navigation.contact')->get($language_code), array('title' => 'Dalton Musicworks Contact Us')) }}</li>
                         <li>
                             <a href="{{ URL::to('cart') }}"><i class="icon-shopping-cart"></i></a>
+                        </li>
+                        <li>
+                        <!-- set up the language link -->
+                            <?php
+                                $cur_URI = URI::current();
+                                if ($cur_URI == "/")
+                                    $cur_URI = "home";
+                            ?>
+                            @if ($language_code == "en")
+                                <a href="{{ URL::to_route('switch-language', array('fr', $cur_URI)) }}"> FR</a>
+                            @elseif ($language_code == "fr")
+                                <a href="{{ URL::to_route('switch-language', array('en', $cur_URI)) }}"> EN</a>
+                            @endif
                         </li>
                     </ul>
                 </div>
@@ -128,24 +140,22 @@
                     <div class="span8">
                         <ul id="footer_links" class="inline pull-right">
                             <!--  <li><a href="index.php">Home</a></li> -->
-                            <li>{{ HTML::link('guitars', 'Guitars', array('title' => 'Dalton Musicworks Guitars')) }}</li>
-                            <li>{{ HTML::link('basses', 'Basses', array('title' => 'Dalton Musicworks Basses')) }}</li>
-                            <li>{{ HTML::link('parts', 'Parts', array('title' => 'Dalton Musicworks Parts')) }}</li>
-                            <li>{{ HTML::link('amps', 'Amps', array('title' => 'Dalton Musicworks Amps')) }}</li>
-                            <li>{{ HTML::link('effects', 'Effects', array('title' => 'Dalton Musicworks Effects')) }}</li>
-                            <li>{{ HTML::link('videos', 'Videos', array('title' => 'Dalton Musicworks Videos')) }}</li>
-                            <li>{{ HTML::link('faq', 'FAQ', array('title' => 'Dalton Musicworks FAQ')) }}</li>
-                            <li>{{ HTML::link('how-to-buy', 'How to Buy', array('title' => 'Dalton Musicworks How to Buy')) }}</li>
-<!--                            <li>{{ HTML::link('about-philosophy', 'Philosophy', array('title' => 'Dalton Musicworks About Our Philosophy')) }}</li>-->
-<!--                            <li>{{ HTML::link('about-people', 'People', array('title' => 'Dalton Musicworks ABout Our People')) }}</li>-->
-                            <li>{{ HTML::link('contact', 'Contact Us', array('title' => 'Dalton Musicworks Contact Us')) }}</li>
+                            <li>{{ HTML::link('guitars', Lang::line('navigation.guitars')->get($language_code), array('title' => 'Dalton Musicworks Guitars')) }}</li>
+                            <li>{{ HTML::link('basses', Lang::line('navigation.basses')->get($language_code), array('title' => 'Dalton Musicworks Basses')) }}</li>
+                            <li>{{ HTML::link('parts', Lang::line('navigation.parts')->get($language_code), array('title' => 'Dalton Musicworks Parts')) }}</li>
+                            <li>{{ HTML::link('amps', Lang::line('navigation.amps')->get($language_code), array('title' => 'Dalton Musicworks Amps')) }}</li>
+                            <li>{{ HTML::link('effects', Lang::line('navigation.effects')->get($language_code), array('title' => 'Dalton Musicworks Effects')) }}</li>
+                            <li>{{ HTML::link('videos', Lang::line('navigation.videos')->get($language_code), array('title' => 'Dalton Musicworks Videos')) }}</li>
+                            <li>{{ HTML::link('faq', Lang::line('navigation.faq')->get($language_code), array('title' => 'Dalton Musicworks FAQ')) }}</li>
+                            <li>{{ HTML::link('how-to-buy', Lang::line('navigation.howtobuy')->get($language_code), array('title' => 'Dalton Musicworks How to Buy')) }}</li>
+                            <li>{{ HTML::link('contact', Lang::line('navigation.contact')->get($language_code), array('title' => 'Dalton Musicworks Contact Us')) }}</li>
                         </ul>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="span5 offset5">
-                        <p class="muted">&copy; 2013 West Island Web Design</p>
+                        <p class="muted">Copyright &copy; 2013 West Island Web Design</p>
                     </div>
                 </div>
             </div>
