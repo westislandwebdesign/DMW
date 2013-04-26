@@ -15,7 +15,7 @@
 <div class="row">
     <div class="span5">
         <div class="Product_Image_Container">
-            {{ HTML::image('img/gtr_for_details.jpg', 'Guitar') }}
+            {{ HTML::image('img/guitars/gtr_for_details.jpg', 'Guitar') }}
         </div>
     </div>
 

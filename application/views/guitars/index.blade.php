@@ -11,13 +11,13 @@
                     <div class="thumbnail product-thumb">
                         <p class="text-center">
                             <a href="{{ URL::to($guitar_details_href) }}">
-                            {{ HTML::image('img/Guitar.jpg', 'Guitar') }}
+                            {{ HTML::image('img/guitars/Guitar.jpg', 'Guitar') }}
                             </a>
                         </p>
-                        <h4 class="text-center">{{ $guitar->model_friendly }}</h4>
+                        <h4 class="text-center"><a href="{{ URL::to($guitar_details_href) }}">{{ $guitar->model_friendly }}</a></h4>
                         <p> {{ $guitar->short_desc }}</p>
                         <p class="text-center">
-                            <a href="{{ URL::to($guitar_details_href) }}" role="button" class="btn btn-primary">View details &raquo;</a>
+                            <a href="{{ URL::to($guitar_details_href) }}" role="button" class="btn btn-primary">View details <span class="icon-chevron-right icon-white"></span></a>
                         </p>
                     </div>
                 </li>
@@ -32,7 +32,7 @@
 <!--            <li class="span4">-->
 <!--                <div class="thumbnail">-->
 <!--                    <p class="text-center"><a href="#">-->
-<!--                            <img src="img/Guitar.jpg" alt="Guitar">-->
+<!--                            <img src="img/guitars/Guitar.jpg" alt="Guitar">-->
 <!--                        </a>-->
 <!--                    </p>-->
 <!--                    <h3 class="text-center">Awesome Guitar</h3>-->

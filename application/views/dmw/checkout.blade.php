@@ -75,6 +75,7 @@
                         <fieldset>
                         <legend>Reserve Your Items <small class="help">Required fields are indicated by a <em>*</em>.</small></legend>
 
+
                         <label for="name">Name: <em>*</em></label>
                         {{ Form::text('name', Input::old('name'), array('class' => 'formField input-block-level', 'placeholder' => 'Your Name', 'required' => 'required')) }}
 

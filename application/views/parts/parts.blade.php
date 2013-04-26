@@ -36,10 +36,10 @@
                                     {{ HTML::image("img/parts/$part->category/$part->prod_id" . ".jpg", $part->model_friendly) }}
                                 </a>
                             </p>
-                            <h4 class="text-center">{{ $part->model_friendly }}</h4>
+                            <h4 class="text-center"><a href="{{ URL::to($part_details_href) }}">{{ $part->model_friendly }}</a></h4>
                             <p> {{ $part->short_desc }}</p>
                             <p class="text-center">
-                                <a href="{{ URL::to($part_details_href) }}" role="button" class="btn btn-primary">View details &raquo;</a>
+                                <a href="{{ URL::to($part_details_href) }}" role="button" class="btn btn-primary">View details <span class="icon-chevron-right icon-white"></span></a>
                             </p>
                         </div>
                     </li>

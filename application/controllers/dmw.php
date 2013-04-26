@@ -25,10 +25,17 @@ class DMW_Controller extends Base_Controller {
             ->with('navbar_itemName', 'top_navbar_effects');
     }
 
-    public function get_accessories()
+    public function get_cases()
     {
-        return View::make('dmw.accessories')
-            ->with('title','Dalton Musicworks - Accessories')
+        return View::make('dmw.cases')
+            ->with('title','Dalton Musicworks - Accessories - Cases')
+            ->with('navbar_itemName', 'top_navbar_accessories');
+    }
+
+    public function get_straps()
+    {
+        return View::make('dmw.straps')
+            ->with('title','Dalton Musicworks - Accessories - Straps')
             ->with('navbar_itemName', 'top_navbar_accessories');
     }
 

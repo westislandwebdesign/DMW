@@ -13,12 +13,17 @@
     <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
 
     <meta charset="UTF-8">
+
+    <!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <!-- Mobile Specific Meta -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Bootstrap -->
-    {{ HTML::style('css/bootstrap/2.3.0/bootstrap.min.css') }}
-    {{ HTML::style('css/bootstrap/2.3.0/bootstrap-responsive.min.css') }}
+<!--    {{ HTML::style('css/bootstrap/2.3.0/bootstrap.min.css') }}-->
+<!--    {{ HTML::style('css/bootstrap/2.3.0/bootstrap-responsive.min.css') }}-->
+    {{ HTML::style('css/bootstrap/2.3.1/bootstrap.min.css') }}
 
     <!-- Project -->
     {{ HTML::style('css/app.css') }}
@@ -38,15 +43,19 @@
     <div class="navbar">
         <div class="navbar-inner">
             <div class="container">
+
+                <a id="navbar_logo" class="pull-left" href="{{ URL::base() }}">
+                    {{ HTML::image('img/logo/DMWLogo35pxHigh.jpg', 'Dalton Musicworks logo') }}
+                    <!-- Dalton Musicworks -->
+                </a>
+
+                <!-- Responsive Navbar -->
                 <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a id="navbar_logo" class="pull-left" href="{{ URL::base() }}">
-                    {{ HTML::image('img/DMWLogo35pxHigh.jpg', 'Dalton Musicworks logo') }}
-                    <!-- Dalton Musicworks -->
-                </a>
+                <!-- everything within this div will be hidden at 940px or less -->
                 <div class="nav-collapse collapse">
                     <ul id="top_navbar" class="nav pull-right">
                         <li id="top_navbar_guitars">{{ HTML::link('guitars', 'Guitars', array('title' => 'Dalton Musicworks Guitars')) }}</li>
@@ -54,7 +63,16 @@
                         <li id="top_navbar_parts">{{ HTML::link('parts', 'Parts', array('title' => 'Dalton Musicworks Parts')) }}</li>
                         <li id="top_navbar_amps">{{ HTML::link('amps', 'Amps', array('title' => 'Dalton Musicworks Amps')) }}</li>
                         <li id="top_navbar_effects">{{ HTML::link('effects', 'Effects', array('title' => 'Dalton Musicworks Effects')) }}</li>
-                        <li id="top_navbar_accessories">{{ HTML::link('accessories', 'Accessories', array('title' => 'Dalton Musicworks Accessories')) }}</li>
+
+<!--                        <li id="top_navbar_accessories">{{ HTML::link('accessories', 'Accessories', array('title' => 'Dalton Musicworks Accessories')) }}</li>-->
+                        <li id="top_navbar_accessories" class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Accessories <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li>{{ HTML::link('cases', 'Cases', array('title' => 'Dalton Musicworks Accessories - Cases')) }}</li>
+                                <li>{{ HTML::link('straps', 'Straps', array('title' => 'Dalton Musicworks Accessories - Straps')) }}</li>
+                            </ul>
+                        </li>
+
                         <li id="top_navbar_videos">{{ HTML::link('videos', 'Videos', array('title' => 'Dalton Musicworks Videos')) }}</li>
                         <li id="top_navbar_faq">{{ HTML::link('faq', 'FAQ', array('title' => 'Dalton Musicworks FAQ')) }}</li>
                         <li id="top_navbar_howtobuy">{{ HTML::link('how-to-buy', 'How to Buy', array('title' => 'Dalton Musicworks How to Buy')) }}</li>
@@ -141,7 +159,7 @@
 {{ HTML::script('js/jquery-1.9.1.min.js') }}
 
 <!-- Bootstrap -->
-{{ HTML::script('js/bootstrap/2.3.0/bootstrap.min.js') }}
+{{ HTML::script('js/bootstrap/2.3.1/bootstrap.min.js') }}
 
 <!-- enable basic responsiveness for <= IE8 -->
 {{ HTML::script('js/respond.min.js') }}
@@ -156,7 +174,7 @@
 <!-- set the active navbar item -->
 <script>
     $(document).ready(function() {
-        /* override Bootstrap's icon path using Laravel methods */
+        /* override internal Bootstrap's icon path using Laravel methods rather than changing Bootstrap sources */
         <?php
             $icon_path = URL::to_asset('img/glyphicons-halflings.png');
             echo '$(\'[class^="icon-"], [class*=" icon-"]\').css(\'background-image\',\'url("' .  $icon_path . '")\');';

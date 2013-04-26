@@ -26,28 +26,31 @@
     <div class="span6">
         <!--Map-->
         <h3>Where We are:</h3>
-        <!-- Clicking this placeholder fires the mapModal Reveal modal -->
+        <address>
+            <strong>Dalton Musicworks</strong><br>
+            123 Awesome St.<br>
+            Somewhere, Earth<br>
+            NCC-1701<br>
+            <abbr title="Phone">P:</abbr>(123) 555-000
+        </address>
+
         <p>
             <a href="#myModal" role="button" class="btn" data-toggle="modal">
-                {{ HTML::image('img/Map.jpg', 'Where we are on map') }}
+                {{ HTML::image('img/contact/Map.jpg', 'Where we are on map') }}
             </a>
         </p>
         <p><a href="#myModal" role="button" class="btn" data-toggle="modal">View Map</a></p>
-        <p>
-            123 Awesome St.<br />
-            Somewhere, Earth<br />
-            NCC-1701
-        </p>
+
 
         <!-- Map Modal -->
         <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times</button>
                 <h3 id="myModalLabel">Where We Are</h3>
             </div>
 
             <div class="modal-body">
-                <p>{{ HTML::image('img/MapBig.jpg', 'Where we are on map') }}</p>
+                <p>{{ HTML::image('img/contact/MapBig.jpg', 'Where we are on map') }}</p>
             </div>
 
             <!--                    <div class="modal-footer">-->

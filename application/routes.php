@@ -21,8 +21,9 @@ Route::post('contact', array(/*'before'=>'csrf',*/ 'dmw@contact'));
 Route::get('amps', 'dmw@amps');
 /* ----------------  effects routes ------------- */
 Route::get('effects', 'dmw@effects');
-/* ----------------  effects routes ------------- */
-Route::get('accessories', 'dmw@accessories');
+/* ----------------  Accessories routes ------------- */
+Route::get('cases', 'dmw@cases');
+Route::get('straps', 'dmw@straps');
 /* ----------------  videos routes ------------- */
 Route::get('videos', 'dmw@videos');
 
