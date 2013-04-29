@@ -52,8 +52,36 @@
             </div>
         </div>
 
+        <hr>
+        
+        <div class="row">
+            <div class="span7">
+                <div class="btn-group">
+                    <?php
+                    if ($previous_part != null) {
+                        $prev_part_details_href = "/parts/$previous_part->model";
+                        echo "<a class=\"btn\" href=\"" . URL::to($prev_part_details_href) . "\">&larr; Previous</a>";
+                    }
+                    else {
+                        echo "<button class=\"btn disabled\">Previous</button>";
+                    }
+
+                    if ($next_part != null) {
+                        $next_part_details_href = "/parts/$next_part->model";
+                        echo "<a class=\"btn\" href=\"" . URL::to($next_part_details_href) . "\">Next &rarr;</a><";
+                    }
+                    else {
+                        echo "<button class=\"btn disabled\">Next</button>";
+                    }
+                    ?>
+                </div>
+            </div>
+        </div>
+
 
     </div>
+
+
 </div>
 
 

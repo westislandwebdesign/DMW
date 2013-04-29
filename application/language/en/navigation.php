@@ -17,7 +17,7 @@ return array(
     'philosophy'    => 'Philosophy',
     'people'        => 'People',
     'brands'        => 'Brands',
-    'contact'       => 'Contact Us',
+    'contact'       => 'Contact',
 
 
 

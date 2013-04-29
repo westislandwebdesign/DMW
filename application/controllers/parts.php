@@ -42,11 +42,25 @@ class Parts_Controller extends Base_Controller
         $model = strtolower($model);
         $part = Part::where_model($model)->first();
 
+        // Get ID of a Part whose autoincremented ID is less than the current user, but because some entries might have been deleted we need to get the max available ID of all entries whose ID is less than current user's
+        $id = Part::where('id', '<', $part->id)->max('id');
+        $previous_part = null;
+        if ($id)
+            $previous_part = Part::where_id($id)->first();
+
+        // Same for the next part's id as previous user's but in the other direction
+        $id = Part::where('id', '>', $part->id)->min('id');
+        $next_part = null;
+        if ($id)
+            $next_part = Part::where_id($id)->first();
+
         if ($part) {
             return View::make('parts.part')
                 ->with('title', $model)
                 ->with('navbar_itemName', 'top_navbar_parts')
-                ->with('part', $part);
+                ->with('part', $part)
+                ->with('previous_part', $previous_part)
+                ->with('next_part', $next_part);
         }
         else {
             return $this->get_index();
