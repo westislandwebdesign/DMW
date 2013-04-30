@@ -88,8 +88,67 @@ class DMW_Controller extends Base_Controller {
             ->with('navbar_itemName', 'top_navbar_contact');
     }
 
+
     public function post_contact() {
-        return 'Contact posted';
+        // first check the hidden captcha
+        // If there IS a value, that means a robot found it and filled it in.
+        // A normal user would not be able to fill it in since it is hidden on
+        // the page.
+        $hidden_captcha = Input::get('hiddenCaptcha');
+        if ($hidden_captcha !== '') {
+            return Redirect::to('contact')
+                ->with('error', 'Error sending message.')
+                ->with('title','Dalton Musicworks - Error: Message Not Sent');
+        }
+
+        try {
+
+            $name = e(Input::get('name'));
+            $email = e(Input::get('email'));
+            $message = e(Input::get('message'));
+
+            if ( (!is_null($name) && !empty($name)) &&
+                (!is_null($email) && !empty($email)) &&
+                (!is_null($message) && !empty($message))) {
+
+                // validate the email address
+                // regex to identify illegal characters in email address
+                $checkEmail = '/^[^@]+@[^\s\r\n\'";,@%]+$/';
+
+                // reject the email address if it doesn't match
+                if (!preg_match($checkEmail, $email)) {
+                    return Redirect::to('contact')
+                        ->with('error', 'Invalid email.')
+                        ->with('title','Dalton Musicworks - Contact');
+                }
+
+
+                $email_to = Config::get('dmw.contact_email');
+                $email_name = Config::get('dmw.contact_email_friendly');
+
+                Message::to($email_to, $email_name)
+                    ->cc('tester@westislandwebdesign.com')
+                    //>bcc(array('evenmore@address.com' => 'Another name', 'onelast@address.com'))
+                    ->from($email)
+                    ->subject('DMW Contact')
+                    ->body($message)
+                    ->send();
+            }
+            else {
+                return Redirect::to('contact')
+                    ->with('error', 'Please fill in the required fields.')
+                    ->with('title','Dalton Musicworks - Contact')
+                    ->with_input();
+            }
+
+        }
+        catch (Exception $e) {
+            return Redirect::to_route('error')->with('error', $e->getMessage());
+        }
+
+        return Redirect::to('contact')
+            ->with('success', 'Your message has been sent.')
+            ->with('title','Dalton Musicworks - Contact');
     }
 
     public function get_cart() {
@@ -232,7 +291,7 @@ class DMW_Controller extends Base_Controller {
                     // regex to identify illegal characters in email address
                     $checkEmail = '/^[^@]+@[^\s\r\n\'";,@%]+$/';
 
-                    // reject the email address if it deosn't match
+                    // reject the email address if it doesn't match
                     if (!preg_match($checkEmail, $email)) {
                         return Redirect::to('checkout')
                             ->with('error', 'Invalid email.')
@@ -244,7 +303,7 @@ class DMW_Controller extends Base_Controller {
                     $order .= "\r\n" . $message;
 
                     $email_to = Config::get('dmw.order_request_email');
-                    $email_name = Config::get('order_request_email_friendly');
+                    $email_name = Config::get('dmw.order_request_email_friendly');
 
                     Message::to($email_to, $email_name)
                         ->cc('tester@westislandwebdesign.com')

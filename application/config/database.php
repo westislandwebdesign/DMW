@@ -78,6 +78,7 @@ return array(
 			'prefix'   => '',
 		),
 
+        //TODO: this needs to point to the DMW database on production server
         /* production connection
         'mysql' => array(
             'driver'   => 'mysql',

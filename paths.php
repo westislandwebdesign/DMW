@@ -52,7 +52,7 @@ $paths['storage'] = 'storage';
 // --------------------------------------------------------------
 // local development path
 $paths['public'] = 'public';
-// production path
+//TODO: this needs to point to the public www root on the live site production path
 //$paths['public'] = '../wwww';
 
 // *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-

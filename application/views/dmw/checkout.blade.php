@@ -1,6 +1,7 @@
 @layout('layouts.default')
 
 @section('page-styles')
+<!-- we need to put this style here so that we can use php to dynamically determine the image path -->
 <style>
     <?php
         $accept_img = URL::to_asset('img/form/accept.png');

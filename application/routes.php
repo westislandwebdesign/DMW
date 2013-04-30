@@ -15,7 +15,7 @@ Route::get('about-philosophy', 'dmw@about_philosophy');
 Route::get('about-people', 'dmw@about_people');
 Route::get('about-brands', 'dmw@our_brands');
 Route::get('contact', 'dmw@contact');
-Route::post('contact', array(/*'before'=>'csrf',*/ 'dmw@contact'));
+Route::post('contact', 'dmw@contact'); //array(/*'before'=>'csrf',*/ 'dmw@contact'));
 Route::get('switch-language/(:any)/page/(:all)', array('as'=>'switch-language', 'uses'=>'dmw@switch_language'));
 
 /* ----------------  amps routes ------------- */

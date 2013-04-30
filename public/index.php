@@ -23,7 +23,7 @@ $web = true;
 // --------------------------------------------------------------
 // development
 require '../paths.php';
-// production
+//TODO: this needs to point to the laravel app path on live site
 //require '../../larapps/dmw/paths.php';
 
 

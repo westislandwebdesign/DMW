@@ -35,6 +35,7 @@ return array(
     |	'encryption' =>	'ssl',
     */
 
+    //TODO: this needs to be set to the DMW email account when we go live
     'transports' => array(
 
         'smtp' => array(

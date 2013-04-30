@@ -1,25 +1,78 @@
 @layout('layouts.default')
 
+@section('page-styles')
+<!-- we need to put this style here so that we can use php to dynamically determine the image path -->
+<style>
+    <?php
+        $accept_img = URL::to_asset('img/form/accept.png');
+        $error_img = URL::to_asset('img/form/error.png');
+        $email_error_img = URL::to_asset('img/form/email_error.png');
+    ?>
+    input:focus:required:invalid {
+        background-image: url('{{ $error_img }}');
+        background-position: 98% center;
+        background-repeat: no-repeat;
+    }
+
+    input:required:valid {
+        background-image: url('{{ $accept_img }}');
+        background-position: 98% center;
+        background-repeat: no-repeat;
+    }
+
+    input[type="email"]:focus:required:invalid {
+        background-image: url('{{ $email_error_img }}');
+    }
+</style>
+@endsection
+
 @section('content')
+
+<div class="row">
+    <div class="span12">
+        @if ($success = Session::get('success'))
+        <div class="alert alert-success">
+            <strong>Success!</strong> {{ $success }}
+        </div>
+        @endif
+        @if ($error = Session::get('error'))
+        <div class="alert alert-error">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            <strong>Error!</strong> {{ $error }}
+        </div>
+        @endif
+        @if ($warning = Session::get('warning'))
+        <div class="alert alert-warning">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            <strong>Warning!</strong> {{ $warning }}
+        </div>
+        @endif
+    </div>
+</div>
+
 <div class="row">
     <div class="span6">
         <!-- Email Form -->
         <h3>Get in Touch!</h3>
 
-        {{ Form::open('contact', 'POST') }}
-            <label>Your Name</label>
-            <input type="text" class="span4" id="yourName" placeholder="Stik E. Frets">
+        <div class="form-container">
+        {{ Form::open( URL::to('contact'), 'POST') }}
+            <label for="name">Name: <em>*</em></label>
+            {{ Form::text('name', Input::old('name'), array('class' => 'formField input-block-level', 'placeholder' => 'Your Name', 'required' => 'required')) }}
 
-            <label>Your Email</label>
-            <input type="text" class="span4" id="yourEmail" placeholder="guitarHero@shredme.com">
+            <label for="email">Email: <em>*</em></label>
+            {{ Form::email('email', Input::old('email'), array('class' => 'formField input-block-level', 'placeholder' => 'name@example.com', 'required' => 'required')) }}
 
-            <label>What's Up?</label>
-            <textarea rows="10" class="span5" placeholder="You guys rock!"></textarea>
+            <label for="message">Message:  <em>*</em></label>
+            {{ Form::textarea('message', Input::old('message'), array('class' => 'formField input-block-level', 'rows' => '8', 'placeholder' => 'You know what you want.', 'required' => 'required')) }}
 
-            <!-- Bootstrap:: why do we need this just to have the submit button line up under the message box???? -->
-            <label></label>
-            <input type="submit" value="Send">
+            {{ Form::submit('Send', array('class' => 'submitButton')) }}
+
+            <div class="hiddenCaptcha">
+                <input type="hidden" name="hiddenCaptcha" value="">
+            </div>
         {{ Form::close() }}
+        </div>
 
     </div>
 
