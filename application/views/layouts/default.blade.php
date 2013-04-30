@@ -155,7 +155,7 @@ $language_code = Session::get('language_code', 'en');
 
                 <div class="row">
                     <div class="span5 offset5">
-                        <p class="muted"><small>Copyright &copy; 2013 West Island Web Design</small></p>
+                        <span id="copyright" class="muted">Copyright &copy; 2013 West Island Web Design</span>
                     </div>
                 </div>
             </div>

@@ -56,7 +56,7 @@
 
         <div class="row">
             <div class="span7">
-                <div class="btn-group">
+                <div class="app-btn-group btn-group">
                     <?php
                     if ($previous_part != null) {
                         $prev_part_details_href = "/parts/$previous_part->model";

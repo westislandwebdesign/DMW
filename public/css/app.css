@@ -33,33 +33,18 @@ html, body {
     margin: 0 auto -80px;
 }
 
- /*Set the fixed height of the footer here*/
+ /* Set the fixed height of the footer here */
 #push, #footer {
     height: 80px;
 }
 
- /*Lastly, apply responsive CSS fixes as necessary*/
-@media (max-width: 767px) {
-    #footer {
-        margin-left: -20px;
-        margin-right: -20px;
-        padding-left: 20px;
-        padding-right: 20px;
-    }
-}
-
- /*Remove top padding when top navbar goes static in narrow viewports*/
-@media (max-width: 979px) {
-    body {
-        padding-top: 0;
-    }
-}
 
 /* ---------------------------------------- */
 /* general footer styling */
 #footer {
     background-color: #e6e6e6;
 }
+
 #footer_row1 {
     padding-top: 5px;
 }
@@ -70,6 +55,27 @@ html, body {
 
 #footer_links {
     font-size: 0.8em;
+}
+
+#footer #copyright {
+    font-size: 0.5em;
+}
+
+/* fixup the footer for mobile */
+@media (max-width: 480px) {
+
+    #wrap {
+        /* Negative indent footer by it's height */
+        margin: 0 auto -150px;
+    }
+
+    #push, #footer {
+        height: 150px;
+    }
+
+    #footer {
+        padding-left: 0.8em;
+    }
 }
 
 
@@ -151,6 +157,18 @@ html, body {
 .thumbnail {
     text-align: center;
 }
+
+/* -----------------------------------------
+   part.php
+----------------------------------------- */
+
+/* fixup the footer for mobile */
+@media (max-width: 480px) {
+    .app-btn-group {
+        margin-bottom: 10px;
+    }
+}
+
 
 /* -----------------------------------------
    videos.php
